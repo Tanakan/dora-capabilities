@@ -1,0 +1,473 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Empowering teams to choose tools</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Empowering teams to choose tools">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Empowering teams to choose tools">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: climate for learning</h4>
+<h1>
+    Empowering teams to choose tools
+    <a class="core" href='/research/'>core</a>
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>If you want to achieve higher software delivery performance and increase the
+<a href="/capabilities/job-satisfaction" >job satisfaction</a>
+of your technical staff, you should empower them to make informed choices about
+the tools and technologies they use to do their work.
+<a href="/research/2017-and-earlier/2017-state-of-devops-report.pdf" target="_blank" >Research</a>
+(PDF) from the DORA team shows this contributes
+to better continuous delivery and higher software delivery performance. Teams
+that can choose their own tools are able to make these choices based on how they
+work and the tasks they need to perform. No one knows better than practitioners
+what they need to be effective, so it&rsquo;s not surprising that practitioner tool
+choice helps to drive better outcomes.</p>
+<p>Allowing teams to choose tools doesn&rsquo;t mean each team is given free rein to
+select any tool they want. Introducing technologies without any constraints can
+increase technical debt and fragility. However, when you combine tool choice
+with other capabilities—for example, a full view of the system, fast feedback,
+and the understanding that they are responsible for the code that they write—it
+helps your technologists make wise decisions about tools they will use and need
+to support. This pattern has been observed at companies like Google and Netflix,
+where a preferred technical stack is supported by default. But if a team feels
+strongly that a different tool or technology is best for their case, they are
+free to choose it. Teams understand that their choice comes with the
+understanding that they must also do the work of supporting this new technical
+stack.</p>
+<h2 id="how-to-empower-teams-to-choose-tools">How to empower teams to choose tools</h2>
+<p>When your organization empowers teams to select tools, it&rsquo;s important to
+balance the freedom to choose tools with the cost to acquire and support them,
+and the added potential complexity of communicating between teams that use
+different tools. The following are some ways you might empower teams to choose
+their own tools.</p>
+<ul>
+<li>
+<p><strong>Establish a cross-team baseline</strong>. With representatives from
+different teams and cross-functional areas (product managers, developers,
+testers, operators), establish a baseline of approved tooling. We recommend
+that the baseline set of tools be large and diverse enough to address the
+majority of the needs of your organization. Examples of tools to include in
+the baseline are programming languages and libraries, testing and
+deployment tools, monitoring infrastructure, and data backends.</p>
+</li>
+<li>
+<p><strong>Periodically review the tools</strong>. Periodically or as a part of sprint
+retrospectives, critically evaluate the baseline toolset to examine their
+effectiveness. These reviews also provide opportunities to discuss and
+demonstrate new technologies.</p>
+</li>
+<li>
+<p><strong>Define a process for exceptions</strong>. Create a clearly defined process
+for deviating from the base toolset. When a new technology is used that&rsquo;s
+outside of the baseline for a project, document what the new tool is and
+why it was used. This documentation is critical when troubleshooting and
+maintaining the project. Additionally, the documentation included in the
+projects can be used later to justify adding the tool to the
+baseline.</p>
+</li>
+</ul>
+<p>An alternative approach is to let teams select their tools. With this strategy,
+each team addresses as much of the software delivery process (business
+requirements, development, operations) as appropriate, using their own
+tool chain. However, be sure that you consider the impact on communication
+between teams and product areas when there are shared resources.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<p>The most common pitfall when empowering your teams to choose tools is to take
+an extreme stance—for example, giving your engineers zero choice in the matter
+or giving your engineers too much choice.</p>
+<p>Forcing tools and technologies on practitioners can improve standardization.
+However, what works in some cases is not necessarily the best solution in every
+case. This approach also limits opportunities for
+<a href="/capabilities/team-experimentation" >experimentation and growth</a>,
+where emerging technologies can be tried and tested. Often, experimenting with
+new technologies and adopting them results in large performance gains. For
+example, if no teams had been allowed to experiment with containerization or
+platform as a service when those were new technologies, their organizations
+would not have realized the resulting performance gains.</p>
+<p>At the other extreme, choosing different tools and technologies for every
+different project or service can introduce technical debt and increase
+fragility. Each time something is added to the tool chain, maintenance
+and operational expenses increase. Over time, those expenses can
+negate the performance gained from the new technology.</p>
+<h2 id="ways-to-improve-tool-choice-in-teams">Ways to improve tool choice in teams</h2>
+<p>The key aspect of performance in tool choice is allowing the teams doing the
+work to select the best tools for the work. Based on that, here are some
+suggestions:</p>
+<ul>
+<li><strong>Periodically assess the tech stack</strong>. During assessments, encourage
+team members to critically evaluate how well the current tools address
+requirements. Additionally, during these reviews, discuss issues with the
+existing tools and potential new tool experimentation can be discussed and
+planned.</li>
+<li><strong>Proactively investigate new tools for new projects</strong>. Have members
+of the teams think about and experiment with new tools to determine whether
+those tools are worth supporting. Try implementing a key piece of the new
+system using both existing and proposed technologies to see whether the
+expected benefits materialize. When you select technologies,
+have a good understanding of the costs associated with the technology.
+These might include licensing, support, and the infrastructure required to
+run the tools. You might also need to hire more people to help with
+adopting and maintaining the technology.</li>
+<li><strong>Schedule time to experiment with new tools</strong>. Periodically, hold
+sessions (such as hackathons) where teams can play around with new projects
+and new technologies. Not all tools will be kept as a result of these
+experiments. But the important point is that you&rsquo;re easing these new
+technologies into your stack or decide they aren&rsquo;t appropriate.</li>
+<li><strong>Hold regular presentations to discuss new tools</strong>. Sponsor organized
+meetings (such as lunch meetings) where new tech is presented and
+discussed. They can be informal meetings where one person does a
+presentation about a project they are working on in a new tech, or
+something they are investigating. Informal meetings like these are a good
+way for the group to talk about new technologies and stay up to date. A
+good approach is to rotate the presentations, with team members taking
+turns presenting Or you can invite people from other teams or someone from
+outside of the company to present. Including people from outside the
+organization can be particularly helpful, because if they have experience
+with a tool, they can discuss hidden costs and complexities that will only
+be apparent after longer-term use.</li>
+</ul>
+<p>The goal is to find ways to introduce technologies into the conversation and
+make sure the team is empowered to make the tool and technology decisions that
+are appropriate for them. An outcome of these conversations may be to stick with
+the tools they have right now.</p>
+<h2 id="ways-to-measure-if-teams-are-empowered-to-choose-tools">Ways to measure if teams are empowered to choose tools</h2>
+<p>The best way to determine whether teams feel that they&rsquo;re empowered
+to choose tools is to ask. You don&rsquo;t want to measure this by
+counting how many tools the team uses or how often teams change tools, because
+the team might be sticking with the same tool, or might be changing tools,
+because they are being told they have to.</p>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>Explore our DevOps
+<a href="/" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

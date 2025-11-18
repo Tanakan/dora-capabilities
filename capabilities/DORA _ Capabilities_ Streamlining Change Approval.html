@@ -1,0 +1,500 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Streamlining Change Approval</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Streamlining Change Approval">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Streamlining Change Approval">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast flow</h4>
+<h1>
+    Streamlining change approval
+    <a class="core" href='/research/'>core</a>
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>Most IT organizations have change management processes to manage the life cycle
+of changes to IT services, both internal and customer-facing. These processes
+are often the primary controls to reduce the operational and security risks of
+change.</p>
+<p>Change management processes often include approvals by external reviewers or
+change approval boards (CABs) to promote changes through the system.</p>
+<p>Compliance managers and security managers rely on change management processes to
+validate compliance requirements, which typically require evidence that all
+changes are appropriately authorized.</p>
+<p>Research by DORA, presented in the
+<a href="/publications/" >2019 State of DevOps Report (PDF)</a>,
+finds that change approvals are best implemented through peer review during the
+development process, supplemented by automation to detect, prevent, and correct
+bad changes early in the software delivery life cycle. Techniques such as
+<a href="/capabilities/test-automation" >continuous testing</a>,
+<a href="/capabilities/continuous-integration" >continuous integration</a>,
+and
+<a href="/capabilities/monitoring-and-observability" >comprehensive monitoring and observability</a>
+provide early and automated detection, visibility, and fast feedback.</p>
+<p>Further, organizations can improve their performance by doing a better job of
+communicating the existing process and helping teams navigate it efficiently.
+When team members have a clear understanding of the change approval process,
+this drives higher performance.</p>
+<h2 id="how-to-implement-a-change-approval-process">How to implement a change approval process</h2>
+<p>Two important goals of the change approval process are decreasing the risk of
+making changes, and satisfying regulatory requirements. One common regulatory
+requirement is segregation of duties, which states that changes must be approved
+by someone other than the author, thus ensuring that no individual has
+end-to-end control over a process.</p>
+<p>Traditionally, these goals have been met through a heavyweight process involving
+approval by people external to the team proposing the change: a change advisory
+board (CAB) or a senior manager. However, DORA&rsquo;s research shows that these
+approaches have a negative impact on software delivery performance. Further, no
+evidence was found to support the hypothesis that a more formal, external review
+process was associated with lower change fail rates.</p>
+<p>Such heavyweight approaches tend to slow down the delivery process leading to
+the release of larger batches less frequently, with an accompanying higher
+impact on the production system that is likely to be associated with higher
+levels of risk and thus higher change fail rates. DORA&rsquo;s research found this
+hypothesis was supported in the data.</p>
+<p>Instead, teams should:</p>
+<ul>
+<li>Use peer review to meet the goal of segregation of duties, with reviews,
+comments, and approvals captured in the team&rsquo;s
+<a href="/capabilities/code-maintainability" >development platform</a>
+as part of the development process.</li>
+<li>Employ <a href="/capabilities/test-automation" >continuous testing</a>,
+<a href="/capabilities/continuous-integration" >continuous integration</a>,
+and
+<a href="/capabilities/monitoring-and-observability" >comprehensive monitoring and observability</a>
+to rapidly detect, prevent, and correct bad changes.</li>
+<li>Treat your development platform as a product that makes it easy for
+developers to get fast feedback on the impact of their changes on multiple
+axes, including security, performance, and stability, as well as defects.</li>
+</ul>
+<p>Your goal should be to make your regular change management process fast and
+reliable enough that you can use it to make emergency changes too.</p>
+<p>In the <a href="/capabilities/continuous-delivery" >continuous delivery</a>
+paradigm the CAB still has a vital role, which includes:</p>
+<ul>
+<li>Facilitating notification and coordination between teams.</li>
+<li>Helping teams with process improvement work to increase their software
+delivery performance.</li>
+<li>Weighing in on important business decisions that require a trade-off and
+sign-off at higher levels of the business, such as the decision between
+time-to-market and business risk.</li>
+</ul>
+<p>This new role for the CAB is strategic. By shifting detailed code review to
+practitioners and automated methods, the time and attention of those in
+leadership and management positions is freed up to focus on more strategic work.
+This transition, from gatekeeper to process architect and information beacon, is
+consistent with the practices of organizations that excel at software delivery
+performance.</p>
+<h2 id="common-pitfalls-in-change-approval-processes">Common pitfalls in change approval processes</h2>
+<p>The following pitfalls are common to change approval processes:</p>
+<p><strong>Reliance on a centralized Change Approval Board (CAB)</strong> to catch errors and
+approve changes. This approach can introduce delay and often error. CABs are
+good at broadcasting change, but people that far removed from the change might
+not understand the implications of those changes.</p>
+<p><strong>Treating all changes equally.</strong> When all changes are subject to the same
+approval process, change review is inefficient, and people are unable to devote
+time and attention to those that require true concentration because of
+differences in risk profile or timing.</p>
+<p><strong>Failing to apply continuous improvement.</strong> As with all processes, key
+performance metrics such as lead time and change fail rate should be targeted
+with the goal of improving the performance of the change management process,
+including providing teams with tools and training to help them navigate it more
+effectively.</p>
+<p><strong>Responding to problems by adding more process.</strong> Often organizations use
+additional process and more heavyweight approvals when faced with stability
+problems in production. Analysis suggests this approach will make things worse
+because this drives up lead times and batch sizes, creating a vicious cycle.
+Instead, invest in making it quicker and safer to make changes.</p>
+<h2 id="ways-to-improve-your-change-approval-process">Ways to improve your change approval process</h2>
+<p>To improve your change approval processes, focus on implementing the following:</p>
+<ol>
+<li>Moving to a peer-review based process for individual changes, enforced at
+code check-in time, and supported by automated tests.</li>
+<li>Finding ways to discover problems such as regressions, performance problems,
+and security issues in an automated fashion as soon as possible after
+changes are committed.</li>
+<li>Performing ongoing analysis to detect and flag high risk changes early on so
+that they can be subjected to additional scrutiny.</li>
+<li>Looking at the change process end-to-end, identifying bottlenecks, and
+experimenting with ways to shift validations into the development platform.</li>
+<li>Implementing information security controls at the platform and
+infrastructure layer and in the development tool chain, rather than
+reviewing them manually as part of the software delivery process.</li>
+</ol>
+<p>Research from the
+<a href="/publications/" >2019 State of DevOps Report (PDF)</a>
+shows that while moving away from traditional, formal change management
+processes is the ultimate goal, simply doing a better job of communicating the
+existing process and helping teams navigate it efficiently has a positive impact
+on software delivery performance. When team members have a clear understanding
+of the process to get changes approved for implementation, this drives high
+performance. This means they are confident that they can get changes through the
+approval process in a timely manner and know the steps it takes to go from
+&ldquo;submitted&rdquo; to &ldquo;accepted&rdquo; every time for all the types of changes they typically
+make.</p>
+<h2 id="ways-to-measure-change-approval-in-your-systems">Ways to measure change approval in your systems</h2>
+<p>Now your teams can list possible ways to measure change approval:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Factor to test</th>
+          <th>What to measure</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Can changes be promoted to production without manual change approvals?</td>
+          <td>The percentage of changes that do (or do not) require a manual change to be promoted to production. <br> <strong>Tip:</strong> You can also measure this factor based on risk profile what percentage of low-, medium-, and high-risk changes require a manual change to be promoted to production?  <br><br></td>
+      </tr>
+      <tr>
+          <td>Do production changes need to be approved by an external body before deployment or implementation?</td>
+          <td>The amount of time changes spend waiting for approval from external bodies. <br> <strong>Tip:</strong> As you shift approvals closer to the work, measure the amount of time spent waiting for approval from local approval bodies or reviewers. <br><br></td>
+      </tr>
+      <tr>
+          <td>Do you rely on peer review to manage changes?</td>
+          <td>You can also measure this factor by risk profile. Measure number or proportion of changes that require approval from external bodies, as well as the time spent waiting for those approvals   <br><br></td>
+      </tr>
+      <tr>
+          <td>Do team members have a clear understanding of the process to get changes approved for implementation</td>
+          <td>The extent to which team members are confident they can get changes through the approval process in a timely manner and know the steps it takes to go from &ldquo;submitted&rdquo; to &ldquo;accepted&rdquo; every time for all the types of changes they typically make</td>
+      </tr>
+  </tbody>
+</table>
+<p>While you consider your own environment, you will likely develop your own measures to understand and gain insight into your change approval processes. We suggest you use these to not only measure your process but also work to improve it.</p>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>See how to
+<a href="https://cloud.google.com/binary-authorization/docs/vulnerability-scanning-kritis" target="_blank" >perform vulnerability scanning as part of your deployment pipeline</a>
+with Cloud Build, Container Analysis, and Kritis Signer.</li>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>Explore our DevOps
+<a href="/" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

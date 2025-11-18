@@ -1,0 +1,575 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Database Change Management</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Database Change Management">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Database Change Management">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast flow</h4>
+<h1>
+    Database change management
+    <a class="core" href='/research/'>core</a>
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>Database changes are often a major source of risk and delay when performing
+deployments. <a href="https://dora.dev" target="_blank" >DORA</a> investigated which database-related practices help during the process of implementing continuous delivery, improving both software delivery performance and availability.</p>
+<p>DORA&rsquo;s research found that integrating database work into the software delivery
+process positively contributes to
+<a href="/capabilities/continuous-delivery" >continuous delivery</a>.
+But how can your teams improve your database delivery as part of implementing
+continuous delivery? A few practices predict performance outcomes.</p>
+<p>DORA discovered that good communication and comprehensive configuration
+management that includes the database matter. Teams that do well at continuous
+delivery store their database changes as scripts in version control and manage these
+changes in the same way they manage production application changes. Furthermore, when
+changes to the application require database changes, these teams discuss them
+with the people responsible for the production database, and ensure the
+engineering team has visibility into the progress of pending database changes.</p>
+<p>When teams follow these practices, database changes don&rsquo;t slow them down or
+cause problems when they perform code deployments.</p>
+<h2 id="how-to-implement-database-change-management">How to implement database change management</h2>
+<p>There are two aspects to implementing effective database change management:
+cultural and technical. This section discusses both.</p>
+<h3 id="establish-effective-communication-of-database-changes">Establish effective communication of database changes</h3>
+<p>Research shows that teams do best when they discuss changes with the people
+responsible for managing the production database, and when everyone has
+visibility into the progress of pending database changes.</p>
+<p>Discussing proposed changes with production database administrators (DBAs) is
+important for a few reasons. First, these experts can advise on how best to
+achieve results, and point out potential issues such as performance problems.
+(Many operations have very different performance characteristics in production
+systems when compared to developer workstations). This discussion also gives
+DBAs insight into what is happening upstream, which helps them better prepare
+for the impact of upcoming changes.</p>
+<p>Making sure everybody has visibility into the progress of changes is also
+crucial so that teams, including DBAs, can understand which changes are coming up,
+their testing status, and which schema changes have made it to the various
+production and non-production shared databases. You can facilitate visibility
+by:</p>
+<ul>
+<li>Keeping all database schema changes in version control, together with
+the application code the schema belongs to;</li>
+<li>Using a tool that records which changes have been run against which
+environments, and what the results were.</li>
+</ul>
+<p>These practices also ensure that there is
+a canonical source of truth for all changes, and makes the history of changes
+easy to access for auditing purposes.</p>
+<h3 id="treat-all-database-schema-changes-as-migrations">Treat all database schema changes as migrations</h3>
+<p>A widely used pattern for versioning database changes is to capture every
+change as a migration script which is kept in version control, as shown in
+the following diagram. Each migration script has a unique sequence number,
+so that you know in which order to apply migrations.</p>
+<p><img src="1.png" alt="Diagram shows capturing every change to your database as a migration script with a unique sequence number."style="max-width:100%"
+  ></p>
+<p>You then ensure that every database instance has a table that records which
+migrations have been run against that particular instance. In this way you version-control the database schema, so you can use a tool to apply the migration scripts to take the
+database to the schema version you want. Examples of tools include:</p>
+<ul>
+<li><a href="https://github.com/golang-migrate/migrate" target="_blank" >migrate</a>
+(Go)</li>
+<li><a href="https://pypi.org/project/alembic/" target="_blank" >alembic</a>
+(Python)</li>
+<li><a href="https://guides.rubyonrails.org/active_record_migrations.html" target="_blank" >Active Record Migrations</a>
+(Ruby on Rails)</li>
+<li><a href="https://github.com/dbup/dbup" target="_blank" >dbup</a>
+(.NET)</li>
+<li><a href="https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/" target="_blank" >Entity Framework Migrations</a>
+(.NET)</li>
+<li><a href="https://laravel.com/docs/7.x/migrations" target="_blank" >Laravel Migrations</a>
+(PHP)</li>
+<li><a href="https://flywaydb.org/" target="_blank" >Flyway</a>
+(platform-independent)</li>
+<li><a href="https://www.liquibase.org/" target="_blank" >Liquibase</a>
+(platform-independent)</li>
+</ul>
+<p>You can also use migrations to
+create empty database schemas for development and testing.</p>
+<p>As shown in the following diagram, every database instance has a table that
+records which migrations you have run against that instance. Then you can perform
+updates automatically
+using a tool or script which executes migrations that have not already been
+applied against the database instance, updating the migrations table after each
+one successfully completes.</p>
+<p><img src="2.png" alt="Example of a table that records migrations against an instance."style="max-width:100%"
+  ></p>
+<p>You can manage database changes in the same way you manage application changes:
+through an automated process that uses version control as its source of truth.</p>
+<h3 id="zero-downtime-database-changes">Zero-downtime database changes</h3>
+<p>Many organizations schedule downtime for their services when making database
+schema changes due to the need to coordinate them with application deployments,
+or due to database table locking during the execution of such changes.
+Continuous delivery aims to eliminate downtime for deployments, so here are some
+strategies to make database schema changes without downtime:</p>
+<ul>
+<li>
+<p><strong>Use an online schema migration framework</strong> such as
+<a href="https://github.com/github/gh-ost" target="_blank" >gh-ost</a>
+or
+<a href="https://www.percona.com/doc/percona-toolkit/3.0/pt-online-schema-change.html" target="_blank" >pt-online-schema-change</a>.
+These tools create a &ldquo;ghost&rdquo; copy of each table you want to change, migrate
+the empty copy, and then incrementally copy data from the original table
+including any updates that happen during the migration. After this process
+is complete, they replace the original table with the ghost. Some
+databases, for example <a href="https://cloud.google.com/spanner/docs/schema-updates" target="_blank" >Cloud Spanner</a>, can perform schema updates with zero downtime.</p>
+</li>
+<li>
+<p><strong>Decouple database changes and application changes</strong> with the
+<a href="https://medium.com/continuousdelivery/expand-contract-pattern-and-continuous-delivery-of-databases-4cfa00c23d2e" target="_blank" >parallel change pattern</a>.
+In this pattern, you never mutate existing database objects. Instead, you
+add new structures alongside old ones. For example, consider changing a
+column for &ldquo;address&rdquo; to two columns: <code>address_1</code> and <code>address_2</code>.</p>
+<p>Instead of deleting the old column and adding the new one, and
+rolling out a new version of the application at the same time, you add the
+new columns but keep the old ones. You can do this before the application
+deployment occurs. Then the new version of the application can look for the
+new columns, reading from them if they are present and not null, otherwise
+reading from the old column. The application can then write to both old and
+new columns, lazily migrating the data, and also allowing for application
+rollback without requiring a database rollback.</p>
+<p>In this way the application deployment is decoupled from the database
+change, which can typically be made without incurring downtime since it
+doesn&rsquo;t involve migrating data. We have traded off some additional
+complexity in the application in order to reduce deployment pain.
+Alternatively, database triggers can be used to keep data in new and old
+columns synchronized.</p>
+</li>
+<li>
+<p><strong>Design and implement a data partitioning and archiving strategy</strong>. A
+major cause of long migrations is database tables with a large number of
+rows. Make sure your applications are designed to allow for partitioning
+and archiving of data to avoid tables growing too large. One example of
+this would be to create multiple instances of a table for each quarter, for
+example, instead of a <code>survey_answers</code> table, you might have
+<code>survey_answers_2020Q1</code>, <code>survey_answers_2020Q2</code> and so forth. Make sure
+application design and architecture reviews include validating the
+application&rsquo;s data partitioning / archiving strategy.</p>
+</li>
+<li>
+<p><strong>Use an event sourcing architecture</strong>. In an
+<a href="https://microservices.io/patterns/data/event-sourcing.html" target="_blank" >event sourcing architecture</a>,
+rather than having the database storing the current state of the
+application, we have it store <em>changes</em> to its state instead, in the form
+of a log of events known as <em>commands</em>. So when your customer changes their
+address, rather than updating a table with the customer details, the
+application issues an address change command which is stored in the
+database. This is how database transaction logs and version control work,
+and is a common pattern in distributed systems. In an event sourced
+architecture, events can be queued allowing database migrations to happen
+while events queue up. Events in the queue can then be flushed to the
+database once the migration is complete. Some databases are able to queue
+queries while schema migrations run, which can be effective if migrations
+complete quickly enough.</p>
+</li>
+<li>
+<p><strong>Use a NoSQL solution.</strong> Some NoSQL databases, such as
+<a href="https://firebase.google.com/docs/firestore" target="_blank" >Firestore</a>
+and
+<a href="https://cloud.google.com/bigtable" target="_blank" >Cloud BigTable</a>,
+don&rsquo;t suffer from the issue of downtime created by schema changes. Document
+databases like Firestore have an implicit schema, which means that the
+schema is managed at the application layer rather than the database layer.
+However there are trade-offs associated with using NoSQL databases: they
+are not optimal for every application.</p>
+</li>
+</ul>
+<p>As well as eliminating scheduled downtime, you also want to avoid unscheduled
+downtime. Make sure you test every schema change against a
+<a href="/capabilities/test-data-management" >production-like data set</a>
+(with any personal or confidential information scrubbed, of course) to make sure
+your application behaves the way you expect during and after migration. Some
+organizations create a scrubbed version of their  production database on a daily
+schedule to use for this purpose. If you are using a database management system
+with more than one node in production, make sure you&rsquo;re testing against an
+instance with at least two nodes to help catch distributed system issues.</p>
+<h2 id="common-pitfalls-of-implementing-database-change-management">Common pitfalls of implementing database change management</h2>
+<p>There are a few common pitfalls to be aware of when implementing the key
+practices described here.</p>
+<p>First, many organizations are heavily siloed. Often DBAs work on their own
+separate team which uses its own process to manage changes. When software
+delivery teams implement a new process for managing database changes without
+consulting the DBA team they are likely to face resistance to using their new
+process to make changes to databases managed by the DBA team. This can
+substantially reduce the benefits of moving to a new process.</p>
+<p>The first step is to get together with them to discuss how to achieve the
+objectives presented in this article. It is important to get their buy-in to any
+proposed process and technology changes. The best way to do this is to ask them
+what problems they are facing, see how the ideas presented in this article can
+help them address these problems, and offer to help out. Ideally delivery teams
+and DBAs can find a mutually acceptable solution.</p>
+<p>This obstacle is often exacerbated by another pitfall: the common situation
+where multiple applications share the same database schema. This means that
+teams working on one application cannot alter the schema without potentially
+impacting other applications. This requires that a single solution be put in
+place to manage database changes for all applications sharing the database
+schema. It is certainly possible, and indeed even more beneficial, to implement
+a version-controlled, self-service mechanism to deploy database changes in this
+situation. However, it involves careful planning and rollout.</p>
+<p>Finally, implementing both migration-based database change management and
+zero-downtime deployments can involve significant
+<a href="/capabilities/loosely-coupled-teams" >architectural change</a>.
+This should be taken into consideration when estimating the effort required to
+implement these practices.</p>
+<h2 id="how-to-measure-database-change-management">How to measure database change management</h2>
+<p>The goal of an effective database change management system is that database
+changes don&rsquo;t slow down deployments or cause problems. It&rsquo;s worth measuring the
+percentage of failed changes in which database changes were a contributing
+factor, and the extent to which work related to database changes contributes
+towards overall lead time from version control to release.</p>
+<p>If database changes require scheduled downtime, this is also an important
+consideration. To measure the economic impact of scheduled downtime, consider
+both the potential lost revenue resulting from downtime and the salary costs of
+paying people to work out of regular hours in order to perform deployments.
+Deploying outside of business hours can also contribute to team burnout. These
+impacts can be used to justify the work required to implement the solutions for
+zero-downtime deployments discussed in this document.</p>
+<p>In terms of measuring the level of automation, consider the proportion of
+database changes that are made in a push-button way using a fully automated
+process. The goal should be that 100% of database changes are made in this way.</p>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>Read about
+<a href="https://www.martinfowler.com/articles/evodb.html" target="_blank" >evolutionary database design</a>.</li>
+<li>Read about
+<a href="https://medium.com/@chbussler/zero-downtime-database-migration-and-replication-to-and-from-cloud-spanner-99ad0c654d12" target="_blank" >zero downtime database migration and replication to and from Cloud Spanner</a></li>
+<li>Find out more about
+<a href="https://cloud.google.com/solutions/databases" target="_blank" >Google Cloud&rsquo;s database solutions</a>.</li>
+<li>Recommended books:
+<ul>
+<li><a href="http://shop.oreilly.com/product/0636920039761.do" target="_blank" ><em>Database Reliability Engineering</em></a> by Laine Campbell and Charity Majors.</li>
+<li><a href="https://books.google.com/books/about/Refactoring_Databases.html?id=puBQAAAAMAAJ" target="_blank" ><em>Refactoring Databases</em></a> by Scott W. Ambler and Pramod J. Sadalage</li>
+</ul>
+</li>
+<li>Explore our DevOps
+<a href="/" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

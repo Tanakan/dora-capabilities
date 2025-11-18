@@ -1,0 +1,486 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Visual Management</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Visual Management">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Visual Management">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast flow</h4>
+<h1>
+    Visual management
+    
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>It&rsquo;s a common practice for teams that are adopting
+<a href="https://wikipedia.org/wiki/Lean_software_development" target="_blank" >lean development practices</a>
+to display key information about their processes in team areas where everybody
+can see it. Visual management boards can create a shared understanding of where
+the team is in terms of its operational effectiveness. They can also help
+identify and remove obstacles in the path to higher performance.</p>
+<h2 id="how-to-implement-visual-management">How to implement visual management</h2>
+<p>There are many kinds of visual displays and dashboards that are common in the
+context of software delivery:</p>
+<ul>
+<li><strong>Card walls, storyboards or Kanban boards</strong>, either physical or
+virtual, with index cards  that represent in-progress work items.</li>
+<li><strong>Dashboards or other visual indicators</strong>, such as continuous
+integration systems with monitors or traffic lights to show whether the
+build is passing or failing. Effective visual displays are created,
+updated, and perhaps discarded by teams in response to issues that the team
+is currently interested in addressing.</li>
+<li><strong>Burn-up or burn-down charts</strong> (for example, cumulative flow diagrams)
+showing the cumulative status of all work being done. These allow the team
+to project how long it will take to complete the current backlog.</li>
+<li><strong>Deployment pipeline monitors</strong> showing what the latest deployable
+build is, and whether stages in the pipeline are failing, such as
+acceptance tests or performance tests.</li>
+<li><strong>Monitors showing production telemetry</strong>, such as the number of
+requests being received, latency statistics, cumulative <code>404</code> and <code>500</code>
+errors, and which pages are most popular.</li>
+</ul>
+<p>When combined with the use of
+<a href="/capabilities/wip-limits" >WIP limits</a>
+and using feedback from production to make business decisions, visual management
+displays can contribute to
+<a href="/research/2015/2015-state-of-devops-report.pdf#page=15" target="_blank" >higher levels of delivery performance</a>
+(PDF).</p>
+<h2 id="common-pitfalls-with-visual-management">Common pitfalls with visual management</h2>
+<p>The most important characteristics of visual management displays are that the
+team cares about and will act upon the information, and that the display is used
+during daily work to identify and remove obstacles to higher performance. Common
+pitfalls when implementing visual management include the following:</p>
+<ul>
+<li><strong>Selecting metrics without the involvement of the team</strong>. Visual
+displays that show metrics that are highly relevant and useful to teams
+will be used more often. In addition, if teams can have input into the
+metrics that are displayed on their visual displays by participating in
+selecting their goals (for example, some teams
+<a href="/guides/devops-culture-transform/" >use OKRs</a>),
+they will be more motivated to drive progress toward those goals.</li>
+<li><strong>Creating displays that are complex, hard to understand, or do not
+provide actionable information</strong>. It&rsquo;s easy to create displays using tools
+that allow high levels of modification or that are fun to play with. But
+changing layouts and color on a custom dashboard isn&rsquo;t helpful if the team
+is working with the wrong metrics or it takes the team several months to
+implement. Key metrics or rough graphs drawn on a whiteboard and updated
+daily can be just as effective to keep the team informed.</li>
+<li><strong>Not evolving visual displays</strong>. Visual management tools should provide
+teams with information that addresses issues they are facing right now. It
+doesn&rsquo;t help one team to copy the displays of other teams unless the teams
+work in the same context, with the same challenges and obstacles. As a
+team&rsquo;s context evolves, visual displays should change as well. Also note
+that as teams address obstacles, their visual displays might change to
+discard old (previously relevant) metrics and highlight new areas of importance.</li>
+<li><strong>Not addressing the underlying problem that the visual display is
+revealing</strong>. Teams sometimes make quick fixes in an effort to make the
+display &ldquo;green&rdquo; again. Displays should be used to drive improvements (fix
+the problem), not become a goal in themselves (keep the board green).
+Focusing on managing the metric alone leads to unintended consequences and
+technical debt. If the display suggests a problem, teams should not just
+fix the immediate problem. They should also work to identify the underlying
+issue or constraint and resolve it, even if it&rsquo;s in another part of the
+organization. Any inefficiencies will keep showing up, and fixing them
+earlier will help all teams.</li>
+</ul>
+<h2 id="ways-to-improve-visual-management">Ways to improve visual management</h2>
+<p>The goal of visual management tools is to provide fast, easy-to-understand
+feedback so you can build quality into the product. This feedback helps the team
+identify defects in the product and understand whether some part of the system
+is not performing effectively, which helps them address the problem. In order to
+be effective, such systems must do the following:</p>
+<ul>
+<li><strong>Reflect information that the team cares about and will act on</strong>.
+Having build monitors does no good if teams don&rsquo;t care whether the display
+shows an issue (for example, showing that the build status is red, meaning
+broken), and won&rsquo;t actually act on this information by swarming to fix the
+issue.</li>
+<li><strong>Be easy to understand</strong>. It should be possible to tell at a glance
+from across the room whether something needs attention. If there <em>is</em> a
+problem, teams should know how to perform further diagnosis or fix the problem.</li>
+<li><strong>Give the team information that is relevant to their work</strong>. While it&rsquo;s
+important to collect as much data as possible about the team&rsquo;s work, the
+display should present only data that is relevant to the team&rsquo;s goals. In
+the face of information overload, particularly information that cannot be
+acted upon, people ignore visual management displays; the displays just
+become noise. The additional data can be accessed and used by the team when
+they are swarming to fix the problem.</li>
+<li><strong>Be updated as part of daily work</strong>. If the team lets the data go stale
+or become inaccurate, they will ignore the visual displays, and the
+displays will no longer be a useful beacon when important issues arise. If
+displays are currently displaying stale or inaccurate data, investigate the
+cause: is the data not related to the team&rsquo;s goals? What data would make
+the display an important and compelling information source for the team?</li>
+</ul>
+<p>Teams shouldn&rsquo;t get caught up in aspects of visual displays that aren&rsquo;t
+critical. For example, visual management displays don&rsquo;t need to be electronic.
+Physical card walls or kanban boards can be easier to manage and understand,
+particularly if the team is all in one location. These displays can also help
+develop valuable team rituals such as physically standing in front of the board
+to pick up work and move it around. A whiteboard with some key project
+information that is updated daily by the team is often preferable to an
+electronic system that&rsquo;s hard to understand, difficult to update, or doesn&rsquo;t
+have necessary information.</p>
+<h2 id="ways-to-measure-visual-management">Ways to measure visual management</h2>
+<p>As with all improvement work, start with the measurable system-level goals that
+the team is working toward. Discover the existing state of the work system.
+Find a way to display the key information about the existing state, as well as
+the state you want. Make sure that this information is displayed only to the
+required precision.</p>
+<p>Review the visual displays as part of regular retrospectives. Ask these
+questions:</p>
+<ul>
+<li>Are the displays giving you the information you need?</li>
+<li>Is the information up to date?</li>
+<li>Are people acting on this information?</li>
+<li>Is the information (and the actions people take in response to it)
+contributing to measurable improvement towards a goal that the team cares about?</li>
+<li>Does everybody know what the goals are?</li>
+<li>Can you look at your visual management displays and see the key process
+metrics you care about?</li>
+</ul>
+<p>If the answer to any of these questions is no, investigate further:</p>
+<ul>
+<li>Can you change the information or how it&rsquo;s displayed?</li>
+<li>Can you get rid of the display altogether?</li>
+<li>Can you create a new display? What would a prototype look like? What are
+the most important pieces of information to include, and how precise do
+they need to be to help you solve your problems and achieve your goals?</li>
+</ul>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>Read the book
+<a href="https://itrevolution.com/book/making-work-visible/" target="_blank" ><em>Making Work Visible</em></a>,
+by Dominica DeGrandis.</li>
+<li>Explore our DevOps
+<a href="/" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

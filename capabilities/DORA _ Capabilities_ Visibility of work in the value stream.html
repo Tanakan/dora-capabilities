@@ -1,0 +1,519 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Visibility of work in the value stream</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Visibility of work in the value stream">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Visibility of work in the value stream">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast feedback</h4>
+<h1>
+    Visibility of work in the value stream
+    
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p><em>Visibility of work</em> represents the extent to which teams have a good
+understanding of the flow of work from the business all the way through to
+customers, and whether they have visibility into this flow, including the status
+of products and features. Visibility of work is part of a wider group of
+capabilities that represent lean product management; these capabilities include
+<a href="/capabilities/working-in-small-batches" >working in small batches</a>,
+<a href="/capabilities/team-experimentation" >team experimentation</a>,
+and
+<a href="/capabilities/customer-feedback" >visibility into customer feedback</a>.
+These capabilities predict both software delivery performance and organizational
+performance (which is measured in terms of profitability, market share, and
+productivity).</p>
+<h2 id="how-to-implement-work-visibility">How to implement work visibility</h2>
+<p>Teams that are proficient at this capability have the following
+characteristics:</p>
+<ul>
+<li>The team understands <strong>how work moves</strong> through the business from
+idea to customer, including products or features.</li>
+<li>The team has visibility into the <strong>flow of this work</strong>.</li>
+<li>The flow of work, including its current state, is <strong>shown on visual
+displays</strong> or dashboards.</li>
+<li><strong>Information about the flow</strong> of product development work across the
+whole value stream is readily available.</li>
+</ul>
+<h3 id="use-value-stream-mapping-to-understand-how-work-flows">Use value stream mapping to understand how work flows</h3>
+<p>Understanding how work moves through the product or feature development value
+stream is an essential step in improving workflow. A useful technique is
+<a href="https://books.google.com/books/about/Value_Stream_Mapping_How_to_Visualize_Wo.html?id=ll7imAEACAAJ" target="_blank" ><em>value stream mapping</em></a>
+(VSM). You can create a value stream map by gathering stakeholders from every
+part of the product development value stream: the business line, design,
+testing, QA, operations, and support. You break the value stream into 5 to 15
+process blocks. In each block, you record the activity that&rsquo;s performed, along
+with the team that performs it, as shown in the following diagram:</p>
+<p><img src="./work-visibility-in-value-stream-9-stages.svg" alt="Value stream showing 9 stages from customer to product deployment."style="max-width:100%"
+  ></p>
+<p>Source:
+<a href="https://www.oreilly.com/library/view/lean-enterprise/9781491946527/" target="_blank" ><em>Lean Enterprise</em></a>
+(O&rsquo;Reilly) by Jez Humble, Joanne Molesky, and Barry O&rsquo;Reilly, 2014</p>
+<p>Next, you analyze the state of work within the value stream, gathering the
+information to determine barriers to flow. In particular, for each process
+block, you measure the following key metrics:</p>
+<ul>
+<li><strong>Lead time</strong>: the time from the point a process accepts a piece of
+work to the point it hands that work off to the next downstream process.</li>
+<li><strong>Process time</strong>: the time it would take to complete a single item of
+work if the person performing it had all the necessary information and
+resources to complete it and could work uninterrupted.</li>
+<li><strong>Percent complete and accurate (%C/A)</strong>: the proportion of times that a
+process receives something from an upstream process that it can use without
+requiring rework.</li>
+</ul>
+<p>You always record the state of the processes as they really are on the day the
+exercise is performed. Make sure that you determine the actual metrics, not what
+people would like the metrics to be.</p>
+<p>The following diagram shows an example of the final output:</p>
+<p><img src="./work-visibility-in-value-stream-stages-with-notes-and-timeline.svg" alt="Value stream stages with notes about each stage and an overall timeline."style="max-width:100%"
+  ></p>
+<p>Source:
+<a href="https://www.oreilly.com/library/view/lean-enterprise/9781491946527/" target="_blank" ><em>Lean Enterprise</em></a>
+(O&rsquo;Reilly) by Jez Humble, Joanne Molesky, and Barry O&rsquo;Reilly, O&rsquo;Reilly, 2014.</p>
+<p>Look for process blocks that produce poor quality work, which then require a
+lot of downstream rework (reflected in a low %C/A in the downstream process
+block), and for processes that have long lead times relative to the process
+time.</p>
+<p>It&rsquo;s important to work with stakeholders to create a future-state value stream
+map that reflects the optimal state of the value stream at some future date (for
+example, in 6 months to 2 years). Stakeholders should also agree to re-run the
+exercise on a regular schedule (for example, every 6 months) to review the
+current state and to review progress.</p>
+<p>A detailed discussion of VSM is out of scope for this document; for more
+information, we recommend
+<a href="https://www.oreilly.com/library/view/value-stream-mapping/9780071828918/" target="_blank" ><em>Value Stream Mapping: How to Visualize Work and Align Leadership for Organizational Transformation</em></a>
+by Karen Martin and Mike Osterling.</p>
+<h3 id="visualize-the-current-state-of-work">Visualize the current state of work</h3>
+<p>VSM can depict how work moves through the product development value stream from
+idea to customer. But to get ongoing visibility into the flow of this work, you
+need a more dynamic view. For software development, you can use a card wall, a
+storyboard, or a Kanban board like the one shown in the following diagram.</p>
+<p><img src="./work-visibility-in-value-stream-kanban-board.svg" alt="Kanban board."style="max-width:100%"
+  ></p>
+<p>Source: &ldquo;Kanban for Ops&rdquo; board game, Dominica DeGrandis, 2013.</p>
+<p>Using visual displays such as this, and creating of WIP limits to manage flow,
+are detailed in the articles on
+<a href="/capabilities/wip-limits" >WIP limits</a>
+and
+<a href="/capabilities/visual-management" >visual management</a>.</p>
+<p>Finally, the mapping should include information about the responsibilities of
+each team, along with statistical data on key metrics such as lead time, deploy
+frequency, and %C/A.</p>
+<h2 id="common-pitfalls-with-work-visibility">Common pitfalls with work visibility</h2>
+<p>Some common obstacles to implementing work visibility include the following:</p>
+<ul>
+<li>
+<p><strong>Overestimating the state of organizational knowledge</strong>. In any
+organization, nobody has a good view into the whole value stream. When a
+company puts together a value stream mapping exercise, it&rsquo;s important to
+gather people from across the value stream to perform the exercise. There
+is often surprise as people find out what <em>actually</em> goes on in other parts
+of the organization.</p>
+</li>
+<li>
+<p><strong>Failing to map the entire value stream</strong>. It&rsquo;s important to map the
+complete value stream from idea (whether that&rsquo;s a line of business, the
+product marketing department, or internal customers) through to IT
+operations and the people who support the product or service being mapped.
+The increased visibility and alignment that results, along with the shared
+understanding, are extremely valuable. Failure to map the entire value
+stream can lead to local optimizations and missed opportunities to improve
+processes in key areas that have an impact on the entire organization.</p>
+</li>
+<li>
+<p><strong>Focusing on the wrong areas for improvement</strong>. Improving efficiency
+in areas that aren&rsquo;t bottlenecks won&rsquo;t have much impact on overall lead
+times, and can make things worse. Companies should of course improve in all
+areas, but there&rsquo;s no point in investing substantial effort in an effort
+that won&rsquo;t have organization-level outcomes.</p>
+</li>
+<li>
+<p><strong>Not granting authority to make changes</strong>. People involved in the
+effort must have the authority to make changes to achieve the future state.
+If these people must try to persuade others in the organization, the
+exercise is unlikely to succeed.</p>
+</li>
+</ul>
+<p>In addition, make sure you look at common obstacles in the articles on
+<a href="/capabilities/wip-limits" >WIP limits</a>
+and
+<a href="/capabilities/visual-management" >visual management</a>.
+Many of them apply in this context too.</p>
+<h2 id="ways-to-improve-work-visibility">Ways to improve work visibility</h2>
+<ul>
+<li>
+<p><strong>Provide tools for visualizing and recording workflow</strong>. Start with
+making sure the team has
+<a href="/capabilities/visual-management" >visual management</a>
+displays that show their work and its flow through the part of the value
+stream that is closest to them, including both the upstream and downstream
+parts of the process. Record how long it takes work to get through the
+process, and how often rework must be performed because the team didn&rsquo;t get
+it right the first time. This will uncover your early and best
+opportunities for improvement at the team level.</p>
+</li>
+<li>
+<p><strong>Create a value stream map</strong>. Work with other teams to perform a
+value-stream mapping exercise to discover how work flows from idea to
+customer outcome, and report the VSM metrics (lead time, process time,
+%C/A) for each process block. Have the team prepare a future-state value
+stream map and work to implement it.</p>
+</li>
+<li>
+<p><strong>Share artifacts</strong>. Make sure the artifacts from these exercises are
+available to everyone in the organization, and that they are updated at
+least annually.</p>
+</li>
+</ul>
+<h2 id="ways-to-measure-work-visibility">Ways to measure work visibility</h2>
+<p>To determine the effectiveness of the team&rsquo;s visibility to the work in the
+value stream, ask these questions:</p>
+<ul>
+<li>Is there a current or recent value stream map available to anyone in
+the organization?</li>
+<li>Does everybody in the organization have access to a visual display that
+shows what they&rsquo;re working on and the status of their work?</li>
+<li>Are statistics on metrics such as lead time and %C/A available to the team?</li>
+</ul>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>Read the book
+<a href="https://www.oreilly.com/library/view/value-stream-mapping/9780071828918/" target="_blank" ><em>Value Stream Mapping: How to Visualize Work and Align Leadership for Organizational Transformation</em></a>,
+by Karen Martin and Mike Osterling.</li>
+<li>Read the book
+<a href="https://books.google.com/books/about/Kanban.html?id=RJ0VUkfUWZkC" target="_blank" ><em>Kanban: Successful Evolutionary Change for Your Technology Business</em></a>,
+by David Anderson.</li>
+<li>Explore our DevOps
+<a href="/" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

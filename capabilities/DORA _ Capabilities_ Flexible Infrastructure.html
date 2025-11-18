@@ -1,0 +1,517 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Flexible Infrastructure</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Flexible Infrastructure">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Flexible Infrastructure">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast flow</h4>
+<h1>
+    Flexible infrastructure
+    <a class="core" href='/research/'>core</a>
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>Many organizations seek flexible technical infrastructure, often in the form of cloud computing. But there&rsquo;s more to it than
+buying your infrastructure from a cloud provider. The US National Institute of
+Standards and Technologies (NIST)
+<a href="https://csrc.nist.gov/pubs/sp/800/145/final" target="_blank" >defines</a>
+five essential characteristics of cloud computing:</p>
+<ul>
+<li><strong>On demand self-service:</strong> Consumers can provision computing resources
+as needed, without human interaction from the provider.</li>
+<li><strong>Broad network access:</strong> Capabilities can be accessed through diverse
+platforms such as mobile phones, tablets, laptops, and workstations.</li>
+<li><strong>Resource pooling:</strong> Provider resources are pooled in a multi-tenant
+model, with physical and virtual resources dynamically assigned on-demand.
+The customer may specify location at a higher level of abstraction such as
+country, state, or data center.</li>
+<li><strong>Rapid elasticity:</strong> Capabilities can be elastically provisioned and
+released to rapidly scale outward or inward on demand, appearing to be
+unlimited and able to be appropriated in any quantity at any time.</li>
+<li><strong>Measured service:</strong> Cloud systems automatically control, optimize, and
+report resource use based on the type of service such as storage,
+processing, bandwidth, and active user accounts.</li>
+</ul>
+<p>The <a href="/research/2019/dora-report/2019-dora-accelerate-state-of-devops-report.pdf" target="_blank" >2019 State of DevOps Report</a> found that only 29% of people who claim to have
+adopted cloud technologies agreed or strongly agreed that they met all five of
+the characteristics defined above. In both 2018 and 2019, DORA&rsquo;s research found
+that elite performers were more than 23 times more likely to have met all five
+essential cloud characteristics than low performers. This may explain why teams
+and executives who claim to have adopted cloud computing technologies also
+express frustration at not reaping the expected results.</p>
+<p>Because many organizations still use their traditional datacenter practices and
+processes to manage their cloud infrastructure, they can&rsquo;t achieve the expected
+benefits, which according to DORA&rsquo;s research include:</p>
+<ul>
+<li>Improved software delivery performance: faster throughput and higher
+levels of stability</li>
+<li>Better service availability</li>
+<li>Improved cost visibility: in 2019, we found that respondents who met all
+essential cloud characteristics are 2.6 times more likely to be able to
+accurately estimate the cost to operate software. They are also twice as
+likely to be able to easily identify their most operationally expensive
+applications.</li>
+</ul>
+<p>For example, many organizations with cloud infrastructure do not allow
+developers to self-service their environments on demand: they require them to
+raise tickets or send emails and wait days for environments to be provisioned or
+for configuration changes to be made. In this case, although the organization
+may pay for a cloud service, they don&rsquo;t have a cloud by NIST&rsquo;s definition.</p>
+<p>When moving to the cloud, organizations must invest in re-designing the
+processes and practices that they implemented when they were using traditional
+data centers. They must adopt cloud-native patterns and practices to achieve the
+agility, stability, availability, and cost transparency of cloud computing. If
+the underlying technology is in the cloud but the outcomes for practitioners
+remain unchanged — days or weeks to obtain test environments, provision new
+infrastructure, or get configuration changes made — then organizations will not
+reap the results they want.</p>
+<h2 id="how-to-implement-flexible-infrastructure">How to implement flexible infrastructure</h2>
+<p>Adopting cloud-native processes and practices to implement NIST&rsquo;s five
+characteristics involves substantial change by several IT functions, including
+developers, operations teams, information security, procurement, and finance.
+The changes require close collaboration between these functions in order to
+identify and resolve conflicting aims.</p>
+<p>For example, many developers expect complete control over production
+infrastructure when using cloud platforms. Information security professionals
+oppose this practice, and with good reason — without disciplined
+<a href="/capabilities/streamlining-change-approval" >change management</a>,
+cloud infrastructure can turn into a fragile work of art that is hard to manage,
+vulnerable to external threats, and does not meet regulatory requirements.</p>
+<p>However, developers can be empowered to provision the resources they require
+while meeting these requirements. Many organizations have adopted the
+<em>infrastructure as code</em> paradigm. (GitOps is an example.) Infrastructure
+configuration is checked into version control, and developers can provision
+environments, make configuration changes, and execute deployments through an
+automated mechanism. The mechanism takes the code  from version control and
+performs operations through the cloud&rsquo;s API on demand without human
+intervention. Using version control and automation, all actions and their output
+are logged to provide complete traceability and auditability of every change to
+each environment.</p>
+<p>Infrastructure-as-code allows you to manage changes effectively, and to apply
+information security controls. For example, you can implement segregation of
+duties by requiring all changes to the configuration specified in version
+control to be
+<a href="/capabilities/streamlining-change-approval" >approved by someone from a specified group of people</a>
+(as is done at Google). However, moving to Infrastructure-as-code requires
+significant engineering effort and process change, including changing policies
+for implementing information security controls.</p>
+<p>Consider another example. While cloud providers typically only bill for
+infrastructure while it is in use (meeting NIST&rsquo;s fifth characteristic, measured
+service), this change from fixed-cost infrastructure to variable cost can have
+significant implications for both procurement and finance. As described in the
+2019 State of DevOps Report:</p>
+<p>&ldquo;Some in finance may say that the cloud has not led to cost savings
+in the short-run, yet we know that it provides greater information
+transparency. How can this be? While the cloud provides transparent
+information about costs to the system owners, users do not pay for
+these costs unless there is a chargeback model or similar mechanism.
+This can lead to wildly variable costs that go unchecked, making cloud
+costs unpredictable. In these scenarios, teams that pay for infrastructure
+may prefer data centers because they are predictable, even though
+their visibility disincentivizes system users to build more efficient
+systems. We suggest organizations better align incentives so that
+system owners have both visibility to build more efficient systems, and
+the incentives to do so, by using chargeback or similar mechanisms.&rdquo;</p>
+<p>In addition to considering how infrastructure is managed at both the
+configuration and finance level, applications must often be re-architected to
+reap the benefits of increased stability, reliability, and agility that cloud
+can provide. Re-architecting systems to a cloud-native paradigm is discussed in
+Google Cloud&rsquo;s white paper,
+<a href="https://cloud.google.com/rearchitecting-to-cloud-native-whitepaper" target="_blank" >Re-architecting to cloud native: an evolutionary approach to increasing developer productivity at scale.</a></p>
+<p>The most crucial consideration is whether your cloud deployment has actually
+helped your organization achieve more
+<a href="/capabilities/continuous-delivery" >rapid, reliable releases</a>,
+and higher levels of availability,
+<a href="/quickcheck/" >velocity, and reliability</a>.</p>
+<h2 id="common-pitfalls-of-implementing-flexible-infrastructure">Common pitfalls of implementing flexible infrastructure</h2>
+<p>The biggest obstacles to meeting the five characteristics defined by NIST
+are:</p>
+<ul>
+<li>Insufficient alignment and collaboration between the organizational
+functions that must work together in order to implement them;</li>
+<li>Insufficient investment in technical, process, and organizational change.</li>
+</ul>
+<p>Many organizations begin with a <em>lift and shift</em> approach to moving
+applications to the cloud. This requires minimal change to applications and to
+established processes for managing cloud infrastructure, and can be done
+relatively quickly. However, it also provides minimal benefits. It&rsquo;s important
+to plan for moving beyond lift and shift to a cloud-native paradigm for new
+software, as well as existing strategic systems that will continue to evolve.</p>
+<p>Moving to the cloud is a multi-year journey. Like all disruptive changes, it&rsquo;s
+important to start small and experiment rapidly to discover what works and what
+doesn&rsquo;t, and then be persistent and disciplined about scaling out learnings and
+effective patterns and practices through the organization.</p>
+<p>There will be many obstacles on this journey to overcome, including:</p>
+<ul>
+<li>Redesigning processes, architecture, and governance to meet regulatory
+requirements in a cloud-native way</li>
+<li>Designing multi-tenant infrastructure architecture that enables teams to
+self-service deployments and configuration changes while ensuring logical
+separation between environments, enabling charge-back, and preventing cloud
+sprawl and orphaned infrastructure</li>
+<li>Building a product development capability for your cloud infrastructure
+platform</li>
+<li>Helping procurement transition to infrastructure as a metered service
+rather than a capital investment</li>
+<li>Helping developers understand how to build cloud-native applications</li>
+<li>Enabling operations to move to modern
+<a href="https://landing.google.com/sre/" target="_blank" >Site Reliability Engineering</a>
+(SRE) practices, including deploying infrastructure-as-code as a
+replacement for manual ticket-based configuration management</li>
+<li>Planning and executing the integration between cloud native systems and
+non-cloud-based systems, including mainframes and packaged software/COTS</li>
+</ul>
+<p>Overcoming these obstacles requires a
+<a href="/guides/devops-culture-transform" >substantial change program</a>
+involving sustained investment and collaboration between people at every level
+of the organization.</p>
+<h2 id="how-to-measure-flexible-infrastructure">How to measure flexible infrastructure</h2>
+<p>In order to decide what to measure, start by considering what benefits you hope
+to gain from implementing cloud infrastructure. Then start measuring the extent
+to which those benefits are being realized.</p>
+<p>For example, if your goal is to improve cost visibility, you might track how
+well you&rsquo;re doing at making sure the cost of infrastructure is correctly billed
+to the relevant business line, team, product, or environment.</p>
+<p>You can also directly measure whether or not you have done a good job of
+implementing NIST&rsquo;s essential characteristics: ask your teams about the extent
+to which they agree with the statements of these characteristics listed at the
+top of this document. Teams that agree or strongly agree are doing well; teams
+that are neutral or disagree need help and support to remove obstacles to
+meeting these outcomes. Then consider how many teams that say they are using
+cloud can actually meet NIST&rsquo;s criteria.</p>
+<p>Some aspects of the essential characteristics can also be measured directly by
+instrumenting your processes. For example, if you have a process for managing
+infrastructure changes you could measure the time it takes end-to-end to make a
+change. You can also look at how prevalent cloud-native technologies are in your
+organization: for example, the proportion of clusters or machines managed using
+Kubernetes or autoscaling groups rather than manual provisioning, or the
+time-to-live for hosts. In data centers, long uptimes generally indicate high
+reliability; in the cloud-native paradigm, configuration changes are often made
+by starting new virtual hosts with the new configuration rather than making
+changes to existing hosts. This practice is known as <em>ephemeral infrastructure</em>, in
+which a long uptime is an indicator of an unpatched machine.</p>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

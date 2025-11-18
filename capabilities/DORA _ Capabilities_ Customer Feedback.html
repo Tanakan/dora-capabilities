@@ -1,0 +1,534 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Customer Feedback</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Customer Feedback">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Customer Feedback">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast feedback</h4>
+<h1>
+    Customer feedback
+    
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>In software projects, developers often work on products for months or years,
+sometimes for multiple releases without validating whether the features they&rsquo;re
+building are actually helping users solve their problems, or whether the
+features are being used at all.</p>
+<p>Customer feedback is part of a wider group of capabilities, including
+<a href="/capabilities/visual-management" >visibility of work in the value stream</a>,
+<a href="/capabilities/working-in-small-batches" >working in small batches</a>,
+and
+<a href="/capabilities/team-experimentation" >team experimentation</a>,
+that together represent a
+<a href="https://books.google.com/books/about/Escaping_the_Build_Trap.html?id=PQ8dMQAACAAJ" target="_blank" >lean approach to product management</a>.</p>
+<p>When these capabilities are applied together, they help predict the following:</p>
+<ul>
+<li>Software delivery performance, which is measured in terms of delivery
+speed, stability, and availability.</li>
+<li>Organizational performance, which is measured in terms of profitability,
+market share, and productivity.</li>
+</ul>
+<p>DORA research
+<a href="/research/2016/2016-state-of-devops-report.pdf#page=35" target="_blank" >shows</a>
+(PDF) that teams achieve higher performance when they work in organizations that
+utilize those capabilities and also do the following:</p>
+<ul>
+<li>Collect customer satisfaction metrics regularly.</li>
+<li>Seek out and attend to customer feedback on product and feature quality.</li>
+<li>Use this feedback to help design products and features.</li>
+</ul>
+<h2 id="how-to-implement-customer-feedback">How to implement customer feedback</h2>
+<p>When you are developing a product, it&rsquo;s important to establish key metrics to
+gauge its success. These metrics help you understand whether you&rsquo;re solving a
+real problem, whether your solution is being adopted sufficiently quickly, and
+whether users continue to use it and recommend it to others. These metrics must
+be explicitly derived from how customers interact with the product. Using these
+metrics requires you to carefully gather and analyze customer feedback.</p>
+<p>One set of metrics that&rsquo;s popular in consumer-facing SaaS products is AARRR:
+acquisition, activation, retention, referral, and revenue. (The order is
+sometimes different depending on who is presenting them.) These are sometimes
+known as <em>pirate metrics</em> because the acronym spells out a word that&rsquo;s
+stereotypically associated with how pirates talk.</p>
+<p>The idea is to look at five key metrics and iterate your customer experience to
+improve on them:</p>
+<ul>
+<li><strong>Acquisition</strong>: The percentage of users that come to your site who
+create an account.</li>
+<li><strong>Activation</strong>: The percentage of acquired users that activate their
+account and use the service.</li>
+<li><strong>Retention</strong>: The percentage of activated users that return to the service.</li>
+<li><strong>Referral</strong>: The percentage of retained users who refer other users to
+the service.</li>
+<li><strong>Revenue</strong>: The percentage of referring users who actually pay money
+for the service.</li>
+</ul>
+<p>If these metrics aren&rsquo;t suitable for your business or product, it&rsquo;s essential
+to discover some that are suitable, monitor those metrics regularly, and use
+them as a key driver of your product strategy.</p>
+<p>The approach described in this article is not just for external-facing
+products. It applies equally to internal products and services that are built
+for other users in your organization. Building internal tools requires exactly
+the same approach: early and frequent engagement with real users to ensure what
+you&rsquo;re building actually solves their problem. Otherwise, you might end up
+building and using tools that nobody uses. This is discouraging for those who
+work on the tools and frustrating for those who have to use tools they don&rsquo;t
+like. It also represents significant costs for the company in building a poor
+technology match for its users.</p>
+<p>A team should use the following pattern in order to maximize their chances of
+successfully solving customer problems:</p>
+<ol>
+<li>Gather customer feedback first, before defining any potential features.</li>
+<li>Validate that you&rsquo;re solving a real problem.</li>
+<li>Iterate on a solution that actually solves that problem (and nothing more).</li>
+<li>Ensure the solution results in a viable business (for example, the cost
+is less than the anticipated revenue).</li>
+<li>Track key metrics to gauge success (for example, AARRR).</li>
+<li>Iterate through the above to improve those metrics.</li>
+</ol>
+<p>Success requires you to not only deploy and release software quickly, but to
+address customer needs better, smarter, and faster. This can be achieved by
+experimenting more thoroughly than your competition. Retail is one industry that
+<a href="/research/2019/dora-report/2019-dora-accelerate-state-of-devops-report.pdf" target="_blank" >has seen particular success with this</a>.
+(PDF).
+Techniques such as
+<a href="https://www.thoughtworks.com/insights/blog/how-implement-hypothesis-driven-development" target="_blank" >hypothesis-driven development</a>,
+defining and measuring your customer acquisition funnel, and A/B testing allow
+you to perform user experiments. This can foster creativity, speed up
+innovation, and create organizational learning.</p>
+<p>Increased engagement with customers and participation in product management
+processes contributes to stronger identification with your organization&rsquo;s
+<a href="/research/2019/dora-report/2019-dora-accelerate-state-of-devops-report.pdf#page=37" target="_blank" >goals and values</a>
+(PDF). This in turn helps contribute to organizational performance.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<p>Some common pitfalls to effectively using customer feedback include the
+following:</p>
+<ul>
+<li><strong>Failing to gather feedback</strong>. It&rsquo;s common for software development
+companies to not gather customer feedback at all.</li>
+<li><strong>Gathering feedback too late</strong>. Sometimes companies gather customer
+feedback so late in the software delivery lifecycle that they cannot act on it.</li>
+<li><strong>Not understanding the problem</strong> (or misinterpreting customer
+feedback). Companies can have unrealistic expectations of their customers,
+or might not understand what customers want from the product. The team
+might even explicitly ignore inconvenient but accurate customer feedback.
+This situation can arise when a development team hasn&rsquo;t adequately
+evaluated or managed the risk of delivering the solution at hand, or simply
+doesn&rsquo;t understand the problem to solve. A development team wants to keep
+the scope of their work to the minimum that&rsquo;s required to solve a problem.
+In some cases, if the problem is larger than what the team has designed
+for, the team might incorrectly dismiss the additional work as
+&ldquo;scope creep.&rdquo;  This results in an incomplete solution from the customer&rsquo;s
+perspective, and ultimately results in a failed product.</li>
+<li><strong>Failing to allow teams to act on feedback</strong>. Delivery teams must be
+empowered to make changes to the design or specification of the system in
+response to feedback, as discussed in the document on
+<a href="/capabilities/team-experimentation" >team experimentation</a>.</li>
+<li><strong>Measuring success based on the wrong metric</strong>. In some cases,
+solutions without sufficient customer validation are provided to
+development and delivery teams as finalized requirements. In those cases,
+the success of the delivery team is then measured based on whether they
+delivered the feature as specified, not on whether the team actually solved
+the problem or achieved the outcome for customers.</li>
+<li><strong>Failing to address the customer&rsquo;s problem</strong>.
+<a href="http://ai.stanford.edu/~ronnyk/ExPThinkWeek2009Public.pdf" target="_blank" >Industry data</a>
+(PDF) from A/B testing shows that in successful
+products, only about one-third of proposed features improve business
+outcomes when actually delivered. The remaining two-thirds of features
+deliver zero or <em>negative</em> outcomes for businesses. So, if you&rsquo;re not
+performing user research, odds are that at least two-thirds of the work
+that teams are doing is either not achieving the outcome they want, or it&rsquo;s
+actively making things worse. If a team is working on early-lifecycle
+products, particularly innovative ones, the team&rsquo;s odds at achieving the
+outcome they want are considerably worse.</li>
+<li><strong>Underestimating the time and effort required to respond to customer
+feedback</strong>. Teams should expect that their proposed solutions are wrong and
+prepare to discard at least two-thirds of them. As for the remaining
+one-third of solutions, teams should be prepared to evolve them
+significantly in response to customer feedback.</li>
+</ul>
+<h2 id="ways-to-improve-customer-feedback">Ways to improve customer feedback</h2>
+<p>The field of user experience design (UX) provides a framework for understanding
+improvement. Many organizations treat UX as just making a product UI look good.
+However, UX is about whether you&rsquo;re solving a real problem for users; more
+broadly, UX is about every experience a user has when they interact with your
+organization. It cannot be overemphasized how critical good UX is to building
+successful products and services.</p>
+<p>It&rsquo;s essential to build customer feedback gathering into the delivery process.
+Every significant feature you build should start by considering the problem to
+be solved. This should include performing user research to determine possible
+solutions and select a candidate. User research should be analyzed before a
+single line of code is written.</p>
+<p>For early-lifecycle products, teams should adopt the ideas put forward in the
+<a href="https://wikipedia.org/wiki/Lean_startup" target="_blank" >lean startup movement</a>
+to validate the underlying business model of the product before any code is
+written. You should validate that you&rsquo;re solving a real problem, and then
+iterate on a solution that solves the problem while providing a viable business
+model.</p>
+<p>You should follow a similar pattern for existing products that are implementing
+a new solution to a known business problem. When the solution design has been
+validated, you should create a prototype so that you can perform further
+research and testing. Only when testing validates that the feature achieves your
+goal should the full production feature be completed.</p>
+<p>Many organizations skip all of this work and fail. However, even strictly
+following these steps does not guarantee success. The point of this effort is to
+do as much as possible to minimize the risk of failure.</p>
+<h2 id="ways-to-measure-customer-feedback">Ways to measure customer feedback</h2>
+<p>Sophisticated data gathering isn&rsquo;t required to establish whether customer
+feedback is gathered, visible, and acted upon. The following questions can help
+you determine how well you&rsquo;re taking advantage of customer feedback for your
+product design:</p>
+<ul>
+<li>Do you have metrics that measure customer satisfaction? Are these
+updated and broadcast to teams regularly? Do you act on them?</li>
+<li>Do you validate all features before building them and perform user
+research with prototypes as part of delivery?</li>
+<li>Do you make changes to features based on this user research?</li>
+<li>Do you actively and regularly gather feedback from users and act on it?</li>
+</ul>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>Read the article <a href="http://ai.stanford.edu/~ronnyk/ExPThinkWeek2009Public.pdf" target="_blank" >Online Experimentation at Microsoft</a>
+(PDF), by Ronny Kohavi.</li>
+<li>Read the article <a href="https://www.thoughtworks.com/insights/blog/how-implement-hypothesis-driven-development" target="_blank" >Hypothesis-driven development</a>,
+by Barry O&rsquo;Reilly.</li>
+<li>Read the book <a href="http://shop.oreilly.com/product/0636920049166.do" target="_blank" ><em>Lean UX: Designing Great Products with Agile Teams</em></a>,
+by Jeff Gothelf and Josh Seiden.</li>
+<li>Read the book
+<a href="http://leananalyticsbook.com/" target="_blank" ><em>Lean Analytics: Use Data to Build a Better Startup Faster</em></a>,
+by Alistair Croll and Benjamin Yoskovitz.</li>
+<li>Read the book <a href="https://www.oreilly.com/library/view/lean-enterprise/9781491946527/" target="_blank" ><em>Lean Enterprise: How High Performance Organizations Innovate at Scale</em></a>,
+by Jez Humble, Joanne Molesky, and Barry O&rsquo;Reilly.</li>
+<li>Explore our DevOps
+<a href="https://www.devops-research.com/research.html" target="_blank" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

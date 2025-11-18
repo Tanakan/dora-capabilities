@@ -1,0 +1,652 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Monitoring and Observability</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Monitoring and Observability">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Monitoring and Observability">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast feedback</h4>
+<h1>
+    Monitoring and observability
+    <a class="core" href='/research/'>core</a>
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>Good monitoring is a staple of high-performing teams.
+<a href="/research/2018/dora-report/2018-dora-accelerate-state-of-devops-report.pdf" target="_blank" >DORA research</a>
+shows that a comprehensive monitoring and observability solution, along with a
+number of other technical practices, positively contributes to
+<a href="/capabilities/continuous-delivery" >continuous delivery.</a></p>
+<p>DORA&rsquo;s research defined these terms as follows:</p>
+<p><strong>Monitoring</strong> is tooling or a technical solution that allows teams to watch
+and understand the state of their systems. Monitoring is based on gathering
+predefined sets of metrics or logs.</p>
+<p><strong>Observability</strong> is tooling or a technical solution that allows teams to
+actively debug their system. Observability is based on exploring properties and
+patterns not defined in advance.</p>
+<p>To do a good job with monitoring and observability, your teams should have the
+following:</p>
+<ul>
+<li>Reporting on the overall health of systems (Are my systems functioning?
+Do my systems have sufficient resources available?).</li>
+<li>Reporting on system state as experienced by customers (Do my customers
+know if my system is down and have a bad experience?).</li>
+<li>Monitoring for key business and systems metrics.</li>
+<li>Tooling to help you understand and debug your systems in production.</li>
+<li>Tooling to find information about things you did not previously know
+(that is, you can identify <em>unknown unknowns</em>).</li>
+<li>Access to tools and data that help trace, understand, and diagnose
+infrastructure problems in your production environment, including
+interactions between services.</li>
+</ul>
+<h2 id="how-to-implement-monitoring-and-observability">How to implement monitoring and observability</h2>
+<p>Monitoring and observability solutions are designed to do the following:</p>
+<ul>
+<li>Provide leading indicators of an outage or service degradation.</li>
+<li>Detect outages, service degradations, bugs, and unauthorized activity.</li>
+<li>Help debug outages, service degradations, bugs, and unauthorized activity.</li>
+<li>Identify long-term trends for capacity planning and business purposes.</li>
+<li>Expose unexpected side effects of changes or added functionality.</li>
+</ul>
+<p>As with all capabilities, installing a tool is not enough to achieve the
+objectives, but tools can help or hinder the effort.  Monitoring systems should
+not be confined to a single individual or team within an organization.
+Empowering all developers to be proficient with monitoring helps develop a
+culture of data-driven decision making and improves overall system
+debuggability, reducing outages.</p>
+<p>There are a few keys to effective implementation of monitoring and
+observability. First, your monitoring should tell you what is broken and help
+you understand why, before too much damage is done. The key metric in the event
+of an outage or service degradation is time-to-restore (TTR). A key contributor
+to TTR is the ability to rapidly understand what broke and the quickest path to
+restoring service (which may not involve immediately remediating the underlying
+problems).</p>
+<p>There are two high-level ways of looking at a system: <em>blackbox</em> monitoring,
+where the system&rsquo;s internal state and mechanisms are not made known, and
+<em>whitebox</em> monitoring, where they are.</p>
+<p>For more information, see &ldquo;Monitoring Distributed Systems&rdquo; in the
+<a href="https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/" target="_blank" >Site Reliability Engineering</a>
+book.</p>
+<h3 id="blackbox-monitoring">Blackbox monitoring</h3>
+<p>In a blackbox (or <em>synthetic</em>) monitoring system, input is sent to the system
+under examination in the same way a customer might. This might take the form of
+HTTP calls to a public API, or RPC calls to an exposed endpoint, or it might be
+calling for an entire web page to be rendered as a part of the monitoring
+process.</p>
+<p>Blackbox monitoring is a sampling-based method. The same system that is
+responsible for user requests is monitored by the blackbox system. A blackbox
+system can also provide coverage of the target system&rsquo;s surface area.  This
+could mean probing each external API method. You might also consider a
+representative mixture of requests to better mimic actual customer behavior.
+For example, you might perform 100 reads and only 1 write of a given API.</p>
+<p>You can govern this process with a <em>scheduling system</em>, to ensure that these
+inputs are made at a sufficient rate in order to gain confidence in their
+sampling. Your system should also contain a <em>validation engine</em>, which can be
+as simple as checking response codes, or matching output with regular
+expressions, up to rendering a dynamic site in a headless browser and traversing
+its DOM tree, looking for specific elements. After a decision is made (pass,
+fail) on a given probe, you must store the result and metadata for reporting and
+alerting purposes.  Examining a snapshot of a failure and its context can be
+invaluable for diagnosing an issue.</p>
+<h3 id="whitebox-monitoring">Whitebox monitoring</h3>
+<p>Monitoring and observability rely on signals sent from the workload under
+scrutiny into the monitoring system. This can generally take the form of the
+three most common components: <em>metrics</em>, <em>logs</em>, and <em>traces</em>. Some
+monitoring systems also track and report <em>events</em>, which can represent user
+interactions with an entire system, or state changes within the system itself.</p>
+<p><em>Metrics</em> are simply measurements taken inside a system, representing the
+state of that system in a measurable way. These are almost always numeric and
+tend to take the form of counters, distributions, and gauges. There are some
+cases where string metrics make sense, but generally numeric metrics are used
+due to the need to perform mathematical calculations on them to form statistics
+and draw visualizations.</p>
+<p><em>Logs</em> can be thought of as append-only files that represent the state of a
+single thread of work at a single point in time. These logs can be a single
+string like &ldquo;User pushed button X&rdquo; or a structured log entry which includes
+metadata such as the time the event happened, what server was processing it, and
+other environmental elements.  Sometimes a system which cannot write structured
+logs will produce a semi-structured string like <code>[timestamp] [server] message [code]</code> which can be parsed after the fact, as needed. Log entries tend to be
+written using a client library like log4j, structlog, bunyan, log4net, or Nlog.
+Log processing can be a very reliable method of producing statistics that
+can be considered trustworthy, as they can be reprocessed based on immutable
+stored logs, even if the log processing system itself is buggy. Additionally,
+logs can be processed in real time to produce <em>log-based metrics</em>.</p>
+<p><em>Traces</em> are composed of <em>spans</em>, which are used to follow an event or user
+action through a distributed system. A span can show the path of a request
+through one server, while another span might run in parallel, both having the
+same parent span. These together form a trace, which is often visualized in a
+waterfall graph similar to those used in profiling tools. This lets developers
+understand time taken in a system, across many servers, queues, and network
+hops. A common framework for this is
+<a href="https://opentelemetry.io/" target="_blank" >OpenTelemetry</a>,
+which was formed from both
+<a href="https://opencensus.io/" target="_blank" >OpenCensus</a>
+and
+<a href="https://opentracing.io/" target="_blank" >OpenTracing</a>.</p>
+<p>Metrics, logs, and traces can be reported to the monitoring system by the
+server under measurement, or by an adjacent <em>agent</em> that can witness or infer
+things about the system.</p>
+<h3 id="instrumentation">Instrumentation</h3>
+<p>To make use of a monitoring system, your system must be <em>instrumented</em>. That
+is, code must be added to a system in order to expose its inner state. For
+example, if a simple program contains a pool of connections to another service,
+you might want to keep track of the size of that pool and the number of unused
+connections at any given time. In order to do so, a developer must write some
+code in the connection pool logic to keep track of when connections are formed
+or destroyed, when they are handed out, and when they are returned. This might
+take the form of log entries or events for each of these, or you might increment
+and decrement a gauge for the size of the queue, or you might increment a
+counter each time a connection is created, or each time a pool is expanded.</p>
+<h3 id="correlation">Correlation</h3>
+<p>Metrics can be collected from the application, as well as from its underlying
+systems, such as the JVM, guest OS, hypervisor, node OS, and the hardware
+itself. Note that as you go further down in a stack, you might start conflating
+metrics that are shared across workloads. For example, if a single machine
+serves several applications, watching the disk usage might not correspond
+directly to the system under observation. Correlating issues across applications
+on a shared system, however, can help you pin down a contributing factor (such
+as a slow disk). Drilling down from a single application to its underlying
+system metrics, then pulling up to show all similarly affected applications can
+be very powerful.</p>
+<p>Measuring a distributed system means having observability in many places and
+being able to view them all together. This might mean both a frontend and its
+database, or it might mean a mobile application running on a customer&rsquo;s device,
+a cloud load balancer, and a set of microservices. Being able to connect data
+from all of these sources in one place is a fundamental requirement in modern
+observability tools.</p>
+<h3 id="computation">Computation</h3>
+<p>After you collect data from various sources for your system, you generate
+statistics and aggregate data across various realms. This might be cohorts of
+users, regions of your compute footprint, or geographic locations of your
+customers. Being able to develop these statistics on-the-fly based on raw
+events is very advantageous but can be costly both in terms of storage as well
+as real-time compute capacity required.</p>
+<p>When you choose your tooling and plan your instrumentation, you must consider
+cardinality and dimensionality. These two aspects of metric collection can
+greatly affect your ability to scale your ability to observe a system.</p>
+<p><em>Cardinality</em> is the measure of distinct values in a system. For example, a
+field like <code>cpu-utilization</code> tends to need a range between 0 and 100. However,
+if you keep track of a user&rsquo;s unique identifier, they&rsquo;re all distinct, thus if
+you have 1M users, you have a cardinality of 1M. This makes a huge
+difference.</p>
+<p><em>Dimensionality</em> is the ability to record more than just a single value along
+with a timestamp, as you might have in a simple timeseries database that backs a
+monitoring system. Simply recording the value of a counter, for example
+requests-sent, might initially record just the value of the number of requests
+sent up to this point in time like ``. However, as with
+structured logs, you might want to also record some environmental data,
+resulting in something like: <code>{time=x, value=y, server=foo, cluster=123, environment=prod, service=bar}</code>. Combining high cardinality and high
+dimensionality can result in dramatically increased compute and storage
+requirements, to the point where monitoring might not work as expected!  This
+needs to be understood by developers who write dynamically generated data and
+metadata into monitoring systems.</p>
+<h3 id="learning-and-improving">Learning and improving</h3>
+<p>Part of operating a system is learning from outages and mistakes. The process
+of writing retrospectives or postmortems with corrective actions is well
+documented. One outcome of this process is the development of improved
+monitoring. It is critical to a fast-moving organization to allow their
+monitoring systems to be updated quickly and efficiently by anyone within the
+organization. Monitoring configuration is critical, so changes should be
+tracked by means of
+<a href="/capabilities/streamlining-change-approval" >review and approval</a>,
+just as with code development and delivery. Keeping your monitoring
+configuration in a
+<a href="/capabilities/version-control" >version control system</a>
+is a good first step in allowing broad access to the system, while maintaining
+control on this critical part of your system. Developing automation around
+deploying monitoring configuration through an automation pipeline can also
+improve your ability to ensure these configurations are valid and applied
+consistently. After you treat your monitoring configuration as code, these
+improvements can all be accomplished by means of a
+<a href="/capabilities/deployment-automation" >deployment automation</a>
+process, ideally the same system used by the rest of your team.</p>
+<h2 id="common-pitfalls-of-implementing-monitoring-and-observability">Common pitfalls of implementing monitoring and observability</h2>
+<p>When developing a system for monitoring and observability for your
+organization, you should be aware that there generally isn&rsquo;t a simple
+plug-and-play solution. Any decent monitoring system will require a deep
+understanding of each component that you want to measure, as well as direct
+manipulation of the code to instrument those systems. Avoid having a single
+monitoring person or dedicated team who is solely
+responsible for the system. This will not only help you prevent a single point
+of failure, but also increase your ability to understand and improve your system
+as an entire organization. Monitoring and observability needs to be built into
+the baseline knowledge of all your developers. A common pitfall here is for
+the operation team, NOC, or other similar team to be the only ones allowed to
+make changes to a monitoring system. This should be avoided and replaced with a
+system that follows CD patterns.</p>
+<p>A common anti-pattern in writing alerts in monitoring systems is to attempt to
+enumerate all possible error conditions and write an alert for each of them. We
+call this <em>cause-based alerting,</em> and you should avoid it as much as possible.
+Instead, you should focus on <em>symptom-based alerting,</em> which only alerts you when
+a user-facing symptom is visible or is predicted to arise soon. You should still
+be able to observe non-user-facing systems, but they shouldn&rsquo;t be directly
+alerting on-call engineers if there are no user-facing symptoms. Note that the
+term <em>user-facing</em> can also include users internal to your organization.</p>
+<p>When generating alerts, you should consider how they are delivered. Your alerts
+should have multiple pathways to oncall engineers, including but not limited to:
+SMS delivery, dedicated mobile apps, automated phone calls, or email. A common
+pitfall is to email alerts to an entire team via an email distribution list.
+This can quickly result in ignored alerts due to
+<a href="https://wikipedia.org/wiki/Diffusion_of_responsibility" target="_blank" >diffusion of responsibility</a>. Another common
+failure is simply a poor
+<a href="https://wikipedia.org/wiki/Signal-to-noise_ratio" target="_blank" >signal-to-noise ratio</a>.
+If too many alerts are not actionable, or result in no improvement, the team
+will easily miss those alerts that are meaningful and possibly very important, a
+problem known as
+<a href="https://wikipedia.org/wiki/Alarm_fatigue" target="_blank" >alarm fatigue</a>.
+Any method to silence or suppress some set of alerts should be tracked very
+carefully to ensure it is not too broad or applied too often.</p>
+<p>When building monitoring dashboards to visualize metrics, a common mistake is
+to spend a long time curating the &ldquo;Perfect Dashboard&rdquo;. This is similar to the
+cause-based alerting mistake above. In a high-functioning team, the system
+under observation changes so fast that any time spent curating a dashboard will
+be out of date before it is done. Instead, focusing on the ability for team
+members to quickly create a dashboard or other set of visualizations that fits
+their needs is important.</p>
+<p>Failing to separate out product or executive-facing metrics such as user
+acquisition rate and revenue tracking away from operational or service health
+dashboards is also a common problem, as they are both very important, but
+distinct. Keeping these separate is highly recommended.</p>
+<h2 id="how-to-measure-monitoring-and-observability">How to measure monitoring and observability</h2>
+<p>When implementing a monitoring and observability system in your organization,
+you can track some internal metrics to see how well you&rsquo;re doing.  Here are some
+that you might wish to track with a monthly survey, or possibly by automatically
+analyzing your postmortems or alerting logs.</p>
+<ul>
+<li><strong>Changes made to monitoring configuration.</strong> How many pull requests or changes
+per week are made to the repository containing the monitoring
+configuration? How often are these changes pushed to the monitoring
+system? (Daily? Batched? Immediately on PR?)</li>
+<li><strong>&ldquo;Out of hours&rdquo; alerts.</strong> What percentage of alerts are handled at
+night? While some global businesses have a follow-the-sun support model
+which makes this a non-issue, it can be an indication that not enough
+attention has been paid to leading indicators of failures. Regular night-time
+alerts can lead to alert fatigue and burned-out teams.</li>
+<li><strong>Team alerting balance.</strong> If you have teams in different locations responsible for
+a service, are alerts fairly distributed and addressed by all teams?  If
+not, why?</li>
+<li><strong>False positives.</strong> How many alerts resulted in no action, or were
+marked as &ldquo;Working as Intended&rdquo;? Alerts which aren&rsquo;t actionable and which
+haven&rsquo;t helped you predict failures should be deleted.</li>
+<li><strong>False negatives.</strong> How many system failures happened with no alerting,
+or alerting later than expected? How often do your postmortems include
+adding new (symptom-based) alerts?</li>
+<li><strong>Alert creation.</strong> How many alerts are created per week (total, or
+grouped by severity, team, etc.)?</li>
+<li><strong>Alert acknowledgement.</strong> What percentage of alerts are acknowledged
+within the agreed deadline (such as 5 minutes, 30 minutes)? Sometimes
+this is coupled with or can be tracked by a metric like <em>alert
+fall-through</em> when a secondary oncall person is notified for an alert.</li>
+<li><strong>Alert silencing and silence duration.</strong> How many alerts are in a
+silenced or suppressed state per week?  How many are added to this pool,
+how many removed?  If your alert silencing has an expiration system, how
+many silences are extended to last longer than initially expected?  What is
+the mean and maximum silence period? (A fun one is &ldquo;how many silences are
+effectively &lsquo;infinite&rsquo;&rdquo;?)</li>
+<li><strong>Unactionable alerts.</strong> What percentage of alerts were considered
+&ldquo;unactionable&rdquo;? That is, the engineer alerted was not able to immediately
+take some action, either out of an inability to understand the alert
+implication, or due to a known issue. Unactionable alerts are a well known
+source of
+<a href="https://landing.google.com/sre/sre-book/chapters/eliminating-toil/" target="_blank" >toil</a>.</li>
+<li><strong>Usability: alerts, runbooks, dashboards.</strong> How many graphs are on your
+dashboards? How many lines per graph? Can teams understand the graphs?
+Is there explanatory text to help out new engineers? Do people have to
+scroll and browse a lot to find the information they need? Can engineers
+navigate from alert to playbook to dashboards effectively? Are the alerts
+named in such a way to point engineers in the right direction? These might
+be measured by surveys of the team, over time.</li>
+<li><strong>MTTD, MTTR, impact</strong>. The bottom line is time to detect, time to
+resolve, and impact. Consider measuring the &ldquo;area under the curve&rdquo; of the
+time that the outage was affecting customers times the number of customers affected.
+This can be estimated or done more precisely with tooling.</li>
+</ul>
+<p>By tracking some or all of these metrics, you&rsquo;ll start to gain a better
+understanding of how well your monitoring and observability systems are working
+for your organization. Breaking these measurements down by product, by
+operational team, or other methods will give you insight not only into the
+health of your products but also your processes and your people.</p>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>Learn more about generating proactive alerts with <a href="/capabilities/proactive-failure-notification" >proactive failure notification</a>.</li>
+<li>Visit
+<a href="https://landing.google.com/sre/resources/" target="_blank" >Google Site Reliability Engineering Resources</a> to find the following SRE books:
+<ul>
+<li>Site Reliability Engineering</li>
+<li>Site Reliability Engineering Workbook</li>
+<li>Building Secure &amp; Reliable Systems</li>
+</ul>
+</li>
+<li><a href="https://cloud.google.com/products/operations" target="_blank" >Google Cloud Operations</a></li>
+<li>Explore our DevOps
+<a href="/" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

@@ -1,0 +1,552 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Version Control</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Version Control">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Version Control">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast flow</h4>
+<h1>
+    Version control
+    <a class="core" href='/research/'>core</a>
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>Version control systems like Git, Subversion, and Mercurial provide a logical
+means to organize files and coordinate their creation, controlled access,
+updating, and deletion across teams and organizations. Version control is
+closely related to automation. In fact, automation and
+<a href="/capabilities/continuous-integration" >continuous integration</a> rely on these
+files for the source code of the automation itself, as well as the
+configuration to be automated and the data to be distributed.</p>
+<p>In order to improve software delivery, teams need to use version control for
+source code, test and deployment scripts, infrastructure and application
+configuration information, and the many libraries and packages they depend upon.
+In the version control system, teams must be able to query the current (and
+historical) state of their environments. Version control also offers direct
+benefits such as disaster recovery and auditability.</p>
+<p>Research shows that comprehensive use of version control, among other
+capabilities, predicts continuous delivery. In particular, version control helps
+you meet these critical requirements:</p>
+<ul>
+<li>
+<p><strong>Reproducibility</strong>. Teams must be able to provision any environment in
+a fully automated fashion, and know that any new environment reproduced
+from the same configuration is identical. A prerequisite for achieving this
+goal is having the scripts and configuration information that are required
+to provision an environment stored in a shared, accessible system.</p>
+</li>
+<li>
+<p><strong>Traceability</strong>. Teams should be able to pick any environment and
+determine quickly and precisely the versions of every dependency
+used to create that environment. They should also be able to compare two
+versions of an environment and see what has changed between them.</p>
+</li>
+</ul>
+<p>These capabilities give teams several important benefits:</p>
+<ul>
+<li>
+<p><strong>Disaster recovery</strong>. When something goes wrong with an
+environment—for example, a hardware failure or a security breach—teams need
+to be able to reproduce that environment in a deterministic amount of time
+in order to be able to restore service.</p>
+</li>
+<li>
+<p><strong>Auditability</strong>. To demonstrate the integrity of the delivery process,
+teams must be able to show the path backward from every deployment to the
+elements it came from, including their version. You enable this through
+comprehensive configuration management combined with deployment pipelines.</p>
+</li>
+<li>
+<p><strong>Higher quality</strong>. The software delivery process is often subject to
+long delays waiting for development, testing, and production environments
+to be prepared. When this preparation can be done automatically from
+version control, teams can get feedback on the impact of their changes more
+rapidly, enabling teams to build quality into their software.</p>
+</li>
+<li>
+<p><strong>Capacity management</strong>. When teams want to add more capacity to their
+environments, the ability to create reproductions of existing servers is
+essential. This capability enables the horizontal scaling of modern
+cloud-based distributed systems.</p>
+</li>
+<li>
+<p><strong>Response to defects</strong>. When teams discover a critical defect, or a
+vulnerability in some component of their system, they need to release a new
+version of their software as quickly as possible. Storing all artifacts in
+version control means teams can roll back to a previously verified working
+state quickly and reliably.</p>
+</li>
+</ul>
+<p>As environments become more complex and heterogeneous, it&rsquo;s progressively
+harder to achieve these goals. It&rsquo;s impossible to achieve perfect
+reproducibility and traceability for a complex enterprise
+system (at a minimum, every real system has state). Thus, a key part
+of configuration management is working to simplify the architecture,
+environments, and processes to reduce the investment required to achieve the
+expected benefits.</p>
+<h2 id="how-to-implement-version-control">How to implement version control</h2>
+<p>When implementing version control, we recommend that you start by defining in
+measurable terms the goals you want to achieve. This allows you and your teams
+to determine the best path to reach those goals. This approach also lets you
+change direction or reassess those goals if the path you choose is too expensive
+or takes too long.</p>
+<p>A version control system records changes to files stored in the system. These
+files can be source code, assets, or other documents that might be part of a
+software development project. Teams make changes in groups called <em>commits</em> or
+<em>revisions</em>. Each revision, along with metadata related to the revision (such as
+who made the change and when), is stored in the system. This allows teams to
+commit, compare, merge, and restore to previous revisions. It also minimizes
+risks by establishing a way to revert objects in production to previous
+versions.</p>
+<p>Teams must be able to restore production services repeatedly and predictably
+(and, ideally, quickly) even when catastrophic events occur, so they must check
+in the following assets to their shared version control repository:</p>
+<ul>
+<li>All application code and dependencies (for example, libraries and
+static content)</li>
+<li>Any script used to create database schemas, application reference data,
+and so on</li>
+<li>All environment creation tools and artifacts described in the
+previous step (for example, VMware image building scripts or
+Terraform files)</li>
+<li>Any file used to create and compose containers (for example, Docker
+files and buildpacks)</li>
+<li>All supporting automated tests and any manual test scripts</li>
+<li>Any script that supports code packaging, deployment, database migration,
+and environment provisioning</li>
+<li>Supporting project artifacts (for example, requirements documentation,
+deployment procedures, and release notes)</li>
+<li>Container orchestration (for example, Kubernetes configuration, OpenShift
+configuration, and Docker Swarm configuration)</li>
+<li>All cloud configuration files (for example,
+<a href="https://cloud.google.com/infrastructure-manager/" target="_blank" >Infrastructure Manager</a>
+configuration, AWS Cloudformation templates, Microsoft Azure Stack
+DSC files, OpenStack HEAT, and Pulumi stacks)</li>
+<li>Any other script or configuration information required to create
+infrastructure that supports multiple services (for example, enterprise
+service buses, database management systems, DNS zone files, configuration
+rules for firewalls, and other networking devices)</li>
+</ul>
+<p>Version control can take many forms, apart from traditional file-based version
+control systems like Git. Teams might have multiple repositories for different
+types of objects and services that are versioned, labeled, and tagged alongside
+their source code. For instance, they might store large virtual machine images,
+ISO files, compiled binaries, and so forth in artifact repositories such as
+<a href="https://cloud.google.com/artifact-registry/" target="_blank" >Google Cloud Artifact Registry</a>,
+Nexus, or Artifactory. Alternatively, they might put objects in blob stores such
+as <a href="https://cloud.google.com/storage" target="_blank" >Google Cloud Storage</a> or Amazon S3. These
+approaches meet the requirements of reproducibility and traceability, and
+provide the same benefits.</p>
+<p>More than re-creating any previous state of the production environment, teams
+must also be able to re-create the preproduction and build processes.
+Consequently, they also need to check into version control everything their
+build processes rely on, including tools and the environments they depend upon.</p>
+<h2 id="common-pitfalls-in-version-control">Common pitfalls in version control</h2>
+<p>The most common pitfall in using version control is <strong>limited application or
+use</strong>; in other words,  applying version control only to software application
+code. Best practice requires the ability to reproduce all testing and production
+environments, including the software deployed on them, in a fully automated
+fashion by using scripts, source code, and configuration information that&rsquo;s
+stored in version control.</p>
+<h2 id="ways-to-improve-version-control">Ways to improve version control</h2>
+<p>You can improve version control in many ways. Here a few we recommend:</p>
+<ul>
+<li>Ensure that every commit to version control triggers the automated
+creation of packages that can be deployed to any environment using <em>only</em>
+information in version control.</li>
+<li>Make it possible to create production-like test environments on demand
+using only scripts and configuration information from version control, and
+to create packages using the automated process described in
+the previous approach.</li>
+<li>Script testing and production infrastructure so that teams can add
+capacity or recover from disasters in a fully automated fashion.</li>
+</ul>
+<p>As you implement a version control system, focus on your constraints. For
+example, what&rsquo;s the biggest blocker to the fast flow of changes from version
+control to production? Are your builds too slow? Is it hard to re-create
+deployable packages? Is it difficult to create production-like test
+environments? These constraints can make it hard to achieve your goals, and
+might indicate a problem to work on with your system&rsquo;s
+<a href="/capabilities/loosely-coupled-teams" >architecture</a>.</p>
+<h2 id="ways-to-measure-version-control">Ways to measure version control</h2>
+<p>To measure how effectively your teams are using version control in their
+systems, try these recommendations:</p>
+<ul>
+<li>
+<p><strong>Application code</strong>. Do you use version control for application code?
+What percentage of application code do you store in version control? How
+easily and quickly can a team recover application code from the version
+control system?</p>
+</li>
+<li>
+<p><strong>System configurations</strong>. Do you use version control for system
+configurations? What percentage of system configurations do you store in
+version control? How easily and quickly can teams reconfigure systems from
+version control?</p>
+</li>
+<li>
+<p><strong>Application configuration</strong>. Do you use version control for
+application configurations? What percentage of application configurations
+do you store in version control? How easily and quickly can teams
+reconfigure applications from code in the version control system?</p>
+</li>
+<li>
+<p><strong>Scripts for automating build and configuration.</strong> Do you keep scripts
+for automating build and configuration in version control? What percentage
+do you store in version control? How quickly and easily can you reprovision
+systems by using scripts from version control?</p>
+</li>
+</ul>
+<p>These recommendations are just the beginning, but they&rsquo;re essential, so we
+suggest that you start with them and learn how to do them well. Then review this
+article and identify additional artifacts that you use in developing and
+delivering software, and ask similar questions: What percentage of those
+artifacts are in version control? How quickly and easily can your team deploy
+new systems or configurations using assets from version control?</p>
+<h2 id="more-from-dora">More from DORA</h2>
+<p>Read more about version control in the following publications:</p>
+<ul>
+<li><a href="https://dora.dev/research/2022/dora-report/" target="_blank" >Accelerate State of DevOps Report 2022</a></li>
+<li><a href="https://dora.dev/research/2019/dora-report/" target="_blank" >Accelerate State of DevOps Report 2019</a></li>
+<li><a href="https://dora.dev/research/2014/" target="_blank" >State of DevOps Report 2014</a></li>
+</ul>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>Explore Google Cloud products referenced in this article
+<ul>
+<li><a href="https://cloud.google.com/artifact-registry/" target="_blank" >Google Cloud Artifact Registry</a></li>
+<li><a href="https://cloud.google.com/storage" target="_blank" >Google Cloud Storage</a></li>
+<li><a href="https://cloud.google.com/infrastructure-manager/" target="_blank" >Google Cloud Infrastructure Manager</a></li>
+</ul>
+</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+<div class="updated">Last updated: July 16, 2025</div>
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

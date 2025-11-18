@@ -1,0 +1,523 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Deployment Automation</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Deployment Automation">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Deployment Automation">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast flow</h4>
+<h1>
+    Deployment automation
+    <a class="core" href='/research/'>core</a>
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>Deployment automation is what enables you to deploy your software to testing
+and production environments with the push of a button. Automation is essential
+to reduce the risk of production deployments. It&rsquo;s also essential for providing
+fast feedback on the quality of your software by allowing teams to do
+comprehensive testing as soon as possible after changes.</p>
+<p>An automated deployment process has the following inputs:</p>
+<ul>
+<li>Packages created by the continuous integration (CI) process (these
+packages should be deployable to any environment, including production).</li>
+<li>Scripts to configure the environment, deploy the packages, and perform a
+deployment test (sometimes known as a <em>smoke test</em>).</li>
+<li>Environment-specific configuration information.</li>
+</ul>
+<p>We recommend that you store the scripts and configuration information in
+version control. Your deployment process should download the packages from an
+artifact repository (for example,
+<a href="https://cloud.google.com/artifact-registry" target="_blank" >Artifact Registry</a>,
+<a href="https://www.sonatype.com/nexus-repository-sonatype" target="_blank" >Nexus</a>,
+<a href="https://jfrog.com/artifactory/" target="_blank" >Artifactory</a>,
+or your CI tool&rsquo;s built-in repository).</p>
+<p>The scripts usually perform the following tasks:</p>
+<ol>
+<li>Prepare the target environment, perhaps by installing and configuring
+any necessary software, or by starting up a virtual host from a
+pre-prepared image in a cloud provider such as Google Cloud.</li>
+<li>Deploy the packages.</li>
+<li>Perform any deployment-related tasks such as running database migration
+scripts.</li>
+<li>Perform any required configuration.</li>
+<li>Perform a deployment test to make sure that any necessary external
+services are reachable, and that the system is functioning.</li>
+</ol>
+<h2 id="how-to-implement-deployment-automation">How to implement deployment automation</h2>
+<p>When you design your automated deployment process, we recommend that you follow
+these best practices:</p>
+<ul>
+<li><strong>Use the same deployment process for every environment, including
+production.</strong> This rule helps ensure that you test the deployment process
+many times before you use it to deploy to production.</li>
+<li><strong>Allow anyone with the necessary credentials to deploy any version of
+the artifact to any environment on demand in a fully automated fashion.</strong>
+If you have to create a ticket and wait for someone to prepare an
+environment, you don&rsquo;t have a fully automated deployment process.</li>
+<li><strong>Use the same packages for every environment.</strong> This rule means that
+you should keep environment-specific configuration separate from packages.
+That way, you know that the packages you are deploying to production are
+the same ones that you tested.</li>
+<li><strong>Make it possible to recreate the state of any environment from
+information stored in version control.</strong> This rule helps ensure that
+deployments are repeatable, and that in the event of a disaster recovery
+scenario, you can restore the state of production in a deterministic way.</li>
+</ul>
+<p>Ideally, you have a tool that you can use autonomously to make deployments,
+that records which builds are currently in each environment, and that records
+the output of the deployment process for audit purposes. Many CI tools have such
+features.</p>
+<h2 id="common-pitfalls-in-deployment-automation">Common pitfalls in deployment automation</h2>
+<p>When you automate your deployment process, you face the following pitfalls:</p>
+<ul>
+<li>Complexity of the existing process.</li>
+<li>Dependencies between services.</li>
+<li>Components that are not designed for automation.</li>
+<li>Poor collaboration between teams.</li>
+</ul>
+<h3 id="complexity">Complexity</h3>
+<p>The first pitfall is complexity. Automating a complex, fragile manual process
+produces a complex, fragile automated process. You first need to re-architect
+for deployability. This means making the deployment script as simple as possible
+and pushing the complexity into the application code and infrastructure
+platform. Look for deployment failure modes and ask how you could avoid them by
+making your services, components, infrastructure platform, and monitoring
+smarter. Cloud-native applications running on a platform-as-a-service such as
+<a href="https://cloud.google.com/appengine" target="_blank" >App Engine</a>,
+<a href="https://cloud.google.com/run" target="_blank" >Cloud Run</a>,
+or
+<a href="https://cloud.google.com/migrate/kf/docs/2.11/concepts/compare-services" target="_blank" >Pivotal Cloud Foundry</a>
+can typically be deployed by running a single command, with no deployment
+scripting required at all: this is the ideal process.</p>
+<p>There are two important properties of a reliable deployment process. First, the
+individual steps of the deployment process should be, to the greatest extent
+possible, idempotent, so that you can repeat them as many times as needed in
+the case of a failure. Second, they should be order independent, meaning that
+components and services should not crash in an uncontrolled way if some other
+component or service they are expecting is absent. Instead, the services should
+continue to operate in a degraded fashion until their dependencies become
+available.</p>
+<p>For new products and services, we recommend that you treat these principles as
+system requirements from the beginning of the design phase. If you are
+retrofitting automation for an existing system, you might need to do some work
+either to implement these characteristics or to build in telemetry such that the
+deployment process can detect inconsistent states and fail gracefully.</p>
+<h3 id="dependencies">Dependencies</h3>
+<p>The second pitfall is that many deployment processes, particularly in
+enterprise environments, require orchestration. In other words, you need to
+deploy multiple services together in a particular order, while you perform other
+tasks such as database migrations in strict synchronization. Although many
+enterprise deployment workflow tools exist to help with this situation, these
+tools are fundamentally band-aids over an architectural problem: tight coupling
+between the various components and services. Over time, you must address this
+tight coupling. The goal is that services should be independently deployable,
+with no orchestration required.</p>
+<p>This approach typically requires careful design to ensure that each service
+supports backward compatibility, such that clients of the service don&rsquo;t require
+upgrading in lock-step, but can be upgraded independently at a later date.
+Techniques such as
+<a href="https://cloud.google.com/architecture/migrating-a-monolithic-app-to-microservices-gke#api_contracts" target="_blank" >API versioning</a>
+can help with this. It&rsquo;s also important to ensure that services can continue to
+operate (perhaps with some functionality unavailable) even if they are unable to
+connect to other services that they depend on. This design is good for
+distributed systems, because it can help prevent cascading failures. Michael
+Nygard&rsquo;s book &ldquo;Release It!&rdquo; describes a number of patterns to help with
+designing distributed systems, including
+<a href="https://martinfowler.com/bliki/CircuitBreaker.html" target="_blank" >circuit breakers</a>.
+You can even decouple database upgrades from the services they depend on by
+using the
+<a href="https://martinfowler.com/bliki/ParallelChange.html" target="_blank" >parallel change pattern</a>.</p>
+<h3 id="not-designed-for-automation">Not designed for automation</h3>
+<p>A third common pitfall is components that are not designed for automation. Any
+deployment process that requires logging into a console and interacting manually
+by clicking around should be a target for improvement. Today, most platforms
+(including Google Cloud) offer an API that your deployment script can use. If
+that&rsquo;s not the case, you need to be creative to avoid such manual intervention,
+perhaps by finding the tool&rsquo;s underlying configuration file or database and
+making changes to it directly, or by replacing it with another tool that does
+have an API.</p>
+<h3 id="poor-collaboration-between-teams">Poor collaboration between teams</h3>
+<p>The last pitfall occurs when developers and IT operations teams aren&rsquo;t in sync.
+This can happen in a few ways. For example, developers might use one method to
+deploy and IT operations uses a different one. Or in another example, if the
+environments are configured differently, you substantially increase the risk of
+the deployment process being manually performed by IT operations, which
+introduces inconsistencies and errors. The deployment automation process must be
+created by developers and IT operations working together. This approach ensures
+that both teams can understand, maintain, and evolve deployment automation.</p>
+<h2 id="ways-to-improve-deployment-automation">Ways to improve deployment automation</h2>
+<p>The first step is to document the existing deployment process in a common tool
+that developers and operations have access to, such as Google Docs or a wiki.
+Then work to incrementally simplify and automate the deployment process. This
+approach typically includes the following tasks:</p>
+<ul>
+<li>Packaging code in ways suitable for deployment.</li>
+<li>Creating pre-configured virtual machine images or containers.</li>
+<li>Automating the deployment and configuration of middleware.</li>
+<li>Copying packages or files into the production environment.</li>
+<li>Restarting servers, applications, or services.</li>
+<li>Generating configuration files from templates.</li>
+<li>Running automated deployment tests to make sure the system is working
+and correctly configured.</li>
+<li>Running testing procedures.</li>
+<li>Scripting and automating database migrations.</li>
+</ul>
+<p>Work to remove manual steps, implement idempotence and order independence
+wherever possible, and leverage the capabilities of your infrastructure platform
+wherever possible. Remember: deployment automation should be as simple as
+possible.</p>
+<h2 id="ways-to-measure-deployment-automation">Ways to measure deployment automation</h2>
+<p>Measuring deployment automation is straightforward.</p>
+<ul>
+<li><strong>Count the number of manual steps in your deployment process</strong>. Work
+to reduce those steps systematically. The number of manual steps increases
+the deployment time as well as the opportunity for error.</li>
+<li><strong>Measure the level (or percentage) of automation in your deployment
+pipeline</strong>. Work to increase that level continually.</li>
+<li><strong>Determine the time spent on delays in the deployment pipeline</strong>. As you
+work to reduce these delays, understand where and why code stalls in your
+deployment pipeline.</li>
+</ul>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>Read more about Google Cloud&rsquo;s
+<a href="https://cloud.google.com/solutions/continuous-delivery" target="_blank" >continuous delivery solutions</a>.</li>
+<li>Read the
+<a href="https://landing.google.com/sre/books/" target="_blank" >Site Reliability Engineering (SRE) book</a>,
+in particular
+<a href="https://landing.google.com/sre/sre-book/chapters/release-engineering/" target="_blank" >Chapter 8 - Release Engineering</a>.</li>
+<li>Read the
+<a href="http://www.informit.com/articles/article.aspx?p=1833567" target="_blank" >Four Principles of Low-Risk Software Releases</a>.</li>
+<li>Explore our DevOps
+<a href="/" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

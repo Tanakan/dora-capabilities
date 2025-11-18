@@ -1,0 +1,476 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Transformational Leadership</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Transformational Leadership">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Transformational Leadership">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: climate for learning</h4>
+<h1>
+    Transformational leadership
+    
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p><a href="https://dora.dev" target="_blank" >DORA</a> research shows that effective leadership has a measurable, significant
+impact on software delivery outcomes. However, rather than driving these
+outcomes directly, effective transformational leaders influence software
+delivery performance by enabling the adoption of technical and product
+management capabilities and practices by practitioners, which in turn drives the
+outcomes leaders care about.</p>
+<p>To study the role of leadership in DevOps transformations, DORA used a measure
+of transformational leadership that includes five dimensions. According to this
+model, validated in
+<a href="https://www.sciencedirect.com/science/article/pii/S1048984304000207" target="_blank" >Dimensions of transformational leadership: Conceptual and empirical extensions</a>
+(Rafferty, A. E., &amp; Griffin, M. A.), the five characteristics of a
+transformational leader are the following:</p>
+<ul>
+<li><strong>Vision</strong>: Understands clearly where their team and the organization
+are going, and where they want the team to be in five years.</li>
+<li><strong>Inspirational communication</strong>: Says positive things about the team;
+says things that make employees proud to be a part of their organization;
+encourages people to see changing conditions as situations full of
+opportunities.</li>
+<li><strong>Intellectual stimulation</strong>: Challenges team members to think about old
+problems in new ways and to rethink some of their basic assumptions about
+their work; has ideas that force team members to rethink some things that
+they have never questioned before.</li>
+<li><strong>Supportive leadership</strong>: Considers others&rsquo; personal feelings before
+acting; behaves in a manner which is thoughtful of others&rsquo; personal needs;
+sees that the interests of team members are given due consideration.</li>
+<li><strong>Personal recognition</strong>: Commends team members when they do a better
+than average job; acknowledges improvement in quality of team members'
+work; personally compliments team members when they do outstanding work.</li>
+</ul>
+<p>These five characteristics of transformational leadership are highly correlated
+with
+<a href="/quickcheck/" >software delivery performance</a>.
+In fact, DORA observed statistically significant differences in leadership
+characteristics between high-, medium- and low- performing software delivery
+teams (see the
+<a href="/research/2017-and-earlier/2017-state-of-devops-report.pdf#page=12" target="_blank" >2017 State of DevOps Report</a>
+pp. 12-19). High-performing teams reported having leaders with the strongest
+behaviors across all dimensions. In
+contrast, low-performing teams reported the lowest levels of these leadership
+characteristics.</p>
+<p>What was most striking, however, was that teams with the least transformative
+leaders (the bottom third) were also far less likely to be high performers at
+software delivery — in fact, they were half as likely to exhibit high software
+delivery performance. This validates common experience: Though there are many
+DevOps and technology transformation success stories emerging from the
+grassroots, it is far easier to achieve success when you have effective,
+transformational leadership.</p>
+<p>Moving beyond correlation to look at <em>how</em> effective transformational leaders
+achieve results, the results are interesting. The DORA team created a predictive
+model using a technique called
+<a href="https://wikipedia.org/wiki/Partial_least_squares_path_modeling" target="_blank" >structural equation modeling</a>
+to test the relationships between transformational leadership, a number of
+technical and product management practices, and software delivery and
+organizational performance. The validated model is shown in the following diagram. You can
+read the arrows as <em>driving</em> or <em>impacting</em> the capabilities and outcomes to
+which they point.</p>
+<p><img src="./transformational-leadership-validated-model.png" alt="Flowchart shows impact of leadership on practices and performance."style="max-width:100%"
+  ></p>
+<p>The validated model shows that effective leaders impact software delivery and
+organizational performance <em>indirectly</em>, by enabling teams to adopt technical
+practices and lean product management practices. It is these practices that
+drive organizational outcomes such as higher software delivery performance and
+organizational performance. These capabilities also drive cultural change, as
+shown in the
+<a href="/" >overall research program</a>.</p>
+<h2 id="how-to-implement-transformational-leadership">How to implement transformational leadership</h2>
+<p>Transformational leadership can be contrasted with transactional leadership,
+where employees are rewarded with money or prestige for complying with
+leadership instructions or punished for failing to follow them.</p>
+<p>However, transformational leaders, according to
+<a href="https://www.sciencedirect.com/science/article/pii/S1048984304000207" target="_blank" >Rafferty and Griffin</a>,
+&ldquo;motivate followers to achieve performance beyond expectations by transforming
+followers&rsquo; attitudes, beliefs, and values as opposed to simply gaining
+compliance.&rdquo;</p>
+<p>DORA&rsquo;s research found evidence that the presence of leaders with
+transformational characteristics is not enough to achieve high performance.
+Looking at teams whose leaders were in the top 10% in terms of transformational
+leadership, the research found that they were not the very highest performers.
+In fact, these teams displayed significant variation in levels of software
+delivery performance.</p>
+<p>This result can be explained by the observation that leaders cannot achieve
+higher performance on their own. Success also depends on the implementation of
+effective technical, management, and product management practices, along with
+the other capabilities discussed in
+DORA&rsquo;s<a href="https://devops-research.com/research.html" target="_blank" > research</a>.
+It&rsquo;s essential that the transformational leadership behaviors, described above,
+are directed towards the implementation of these capabilities.</p>
+<p>Take vision as an example. One way to create a clear vision for a software
+delivery team is to set measurable relative goals for
+<a href="/quickcheck/" >software delivery performance</a>.
+<a href="https://www.linkedin.com/pulse/double-half-quarter-lesson-from-book-richard-david-knott/" target="_blank" >For example</a>
+Richard Herbert, CIO for Global Banking at Markets of HSBC, set every team the
+goal to &ldquo;double the frequency of releases, half the number of low impact
+incidents, and quarter the number of high impact incidents.&rdquo;</p>
+<p>There may be significant obstacles to achieving goals like the ones set by
+Richard Herbert. Again, leaders can use intellectual stimulation to help teams
+identify and remove obstacles to achieving higher performance. Perhaps team
+members believe that implementing <a href="/capabilities/test-automation" >continuous testing</a>
+will help them, but they&rsquo;ve
+tried before and failed. Leaders can ask teams questions such as: &ldquo;Why did it
+fail last time?&rdquo;, &ldquo;What lessons did you learn?&rdquo;, &ldquo;What would you do differently
+this time?&rdquo;, &ldquo;What ideas would you like to try this time?&rdquo;.</p>
+<p>Personal recognition is also important, and must be directed such that it
+reinforces behaviors that help teams improve. Examples include trying
+experiments even if they don&rsquo;t work, or taking time to help other teams
+implement new ideas. Another example of effective personal recognition is
+e-commerce company Etsy, which at its annual engineering conference
+<a href="https://www.infoq.com/articles/crafting-resilient-culture/" target="_blank" >gives an award</a>
+&ldquo;to the engineer who inadvertently causes the most interesting or most
+learning-filled incident.&rdquo;</p>
+<p>It&rsquo;s crucial that these behaviors are demonstrated consistently, and
+particularly when the team is under stress.</p>
+<p>Finally, remember that leadership doesn&rsquo;t just mean executives and managers:
+anybody can be a leader. Almost all of these behaviors can be practiced by
+everybody in an organization. Consider how you can build them into your daily
+interactions with other people in your organization.</p>
+<h2 id="how-to-measure-transformational-leadership">How to measure transformational leadership</h2>
+<p>Transformational leadership can be measured directly by asking team members
+about the extent to which they believe leaders exhibit the behaviors
+described.</p>
+<p>The effects of transformational leadership are also measurable. For example, if
+a leader does an outstanding job of defining and communicating their vision,
+everybody in the organization should be able to describe that vision in a
+consistent way without having to look it up.</p>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>Read <a href="https://itrevolution.com/product/transformational-leadership-a-quick-start-guide/" target="_blank" >Transformational Leadership: A Quick Start Guide</a> from IT Revolution, which includes a self-assessment and action plan for improvement.</li>
+<li>Read <a href="https://books.google.com/books/about/Leadership_and_Performance_Beyond_Expect.html?id=NCd-QgAACAAJ" target="_blank" ><em>Leadership and Performance Beyond Expectations</em></a> by Bernad M. Bass (Free Press, 1985.)</li>
+<li>Check out the article <a href="/guides/devops-culture-transform" >How to transform your organization.</a></li>
+<li>Explore our DevOps
+<a href="https://www.devops-research.com/research.html" target="_blank" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>

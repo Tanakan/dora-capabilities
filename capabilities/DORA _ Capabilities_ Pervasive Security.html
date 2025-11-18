@@ -1,0 +1,526 @@
+<!doctype html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLXSJLRVQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWLXSJLRVQ');
+</script>
+
+
+
+<title>DORA | Capabilities: Pervasive Security</title>
+
+
+
+<link rel="stylesheet" href="/scss/main.b00d7e76e1b3edfc695882ae0c694e4834222cea0e416a1a9d9e2caf73f522d4.css" integrity="sha256-sA1&#43;duGz7fxpWIKuDGlOSDQiLOoOQWoanZ4sr3P1ItQ=">
+<link rel="stylesheet" href="/css/quickcheck-variables.893d3e3acc263f6c37987aaa860c6ed32a88b3a286d6409d4fd06f0c1859cb82.css" integrity="sha256-iT0&#43;OswmP2w3mHqqhgxu0yqIs6KG1kCdT9BvDBhZy4I=">
+
+
+<meta name="description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="keywords" content="DevOps, Lead time, Deploy frequency, Change fail rate, MTTR, Time to restore, metrics, DORA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Google+Material+Icons&amp;lang=en" rel="stylesheet">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://dora.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DORA | Capabilities: Pervasive Security">
+<meta property="og:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta property="og:image" content="/img/misc/dora_social_image.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dora.dev">
+<meta property="twitter:url" content="https://dora.dev">
+<meta name="twitter:title" content="DORA | Capabilities: Pervasive Security">
+<meta name="twitter:description" content="DORA is a long running research program that seeks to understand the capabilities that drive software delivery and operations performance. DORA helps teams apply those capabilities, leading to better organizational performance.">
+<meta name="twitter:image" content="/img/misc/dora_social_image.png">
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+        headings.forEach((heading) => {
+            addAnchorLink(heading);
+        })
+
+        highlightSelectedHeading();
+    });
+
+    function addAnchorLink(heading) {
+        
+        let anchorText = heading.getAttribute('id');
+
+        let anchorLink = Object.assign(document.createElement('a'),{
+            href: '#' + anchorText,
+            className: 'heading-link',
+            innerHTML: '<span class="google-material-icons">link</span> <span class="click-to-copy">click to copy link</span>',
+        });
+        heading.append(anchorLink);
+        
+        heading.addEventListener("mouseover",
+            (event) => { anchorLink.style.visibility='visible' }
+        );
+        heading.addEventListener("mouseout",
+            (event) => { 
+                anchorLink.style.visibility='hidden';
+                anchorLink.lastChild.innerHTML='click to copy link';
+            }
+        );
+        
+        anchorLink.addEventListener("mouseover",
+            (event) => {
+                anchorLink.lastChild.style.visibility='visible';
+            }
+        );
+        anchorLink.addEventListener("mouseout",
+            (event) => {
+                anchorLink.lastChild.style.visibility='hidden';
+            }
+        );
+        anchorLink.addEventListener("click",
+            (event) => {
+                event.preventDefault();
+                let currentBaseUrl = location.href.split('#')[0];
+                let targetURL = `${currentBaseUrl}#${anchorText}`;
+                navigator.clipboard.writeText(targetURL);
+                console.debug(`copied to clipboard: ${targetURL}`);
+                anchorLink.lastChild.innerHTML='<em>copied!</em>';
+            }
+        );
+    };
+
+    function highlightSelectedHeading() {
+        
+        let selectedAnchor = location.href.split('#')[1];
+            if (selectedAnchor) {
+                document.querySelector(`#${selectedAnchor}`).classList.add('heading-highlight');
+            }
+    }
+</script>
+
+<style>
+
+    .heading-link {
+        visibility: hidden;
+        text-decoration: none;
+        padding-left:1rem;
+    }
+
+    .heading-link .google-material-icons {
+        color:#666;
+    }
+
+    .heading-link .google-material-icons:hover {
+        color:#1a73e8;
+    }
+
+    .click-to-copy {
+        font-size:.75rem;
+        color:#666;
+        text-decoration: none;
+        visibility: hidden;
+        vertical-align: middle;
+    }
+
+     
+     
+</style></head>
+    <body><header>
+  <div class="navContainer">
+    <div class="dora-logo-link">
+      <a href="/"><img src="/img/dora-logo.svg" height="48px" class="dora-logo" alt="DORA"></a>
+    </div>
+    <nav>
+      <ul class="menuLinksDesktop">
+        <li><a href="/publications/" >Publications</a>
+        </li>
+        <li><a href="/research/" >Research</a></li>
+        <li><a href="/capabilities/" class="active" >Capabilities</a>
+        </li>
+        <li><a href="/guides/" >Guides</a></li>
+        <li><a href="/quickcheck/" >Quick Check</a>
+        </li>
+        <li id="searchLinkDesktop"><a class="google-material-icons" id="searchIcon"
+            aria-label="Search dora.dev">search</a></li>
+        </li>
+        <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+              class="google-material-icons open_in_new">open_in_new</span></a></li>
+      </ul>
+      <div id="searchInputPopover" popover>
+        <div id="searchInputPopoverFields"><form action="/search/" method="get" id="searchForm">
+    <div class="searchInputContainer"><input type="search" name="q" class="searchQuery"
+            placeholder="Search dora.dev for..." required><input type="submit" value="search" id="searchButton"
+            class="searchButton" /></div>
+</form></div>
+      </div>
+      <div class="page-overlay"></div>
+      <label id="hamburgerContainer">
+        <input type="checkbox" id="mobileMenuController" onchange="console.log(this.checked)" />
+        <span class="google-material-icons" aria-label="menu" id="hamburgerIcon">
+          <span class="menu">menu</span>
+          <span class="close">close</span>
+        </span>
+      </label>
+    </nav>
+  </div>
+</header>
+<div class="menuLinksMobile">
+  <ul>
+    <li><a href="/publications/" >Publications</a>
+    </li>
+    <li><a href="/research/" >Research</a></li>
+    <li><a href="/capabilities/" class="active" >Capabilities</a>
+    </li>
+    <li><a href="/guides/" >Guides</a></li>
+    <li><a href="/quickcheck/" >Quick Check</a>
+    </li>
+    <li id="searchLinkMobile"><a href="/search/" >Search</a>
+    </li>
+    <li><a href="https://dora.community/" target="_blank">Community&nbsp;&nbsp;<span
+          class="google-material-icons open_in_new">open_in_new</span></a></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelector('#searchIcon').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#searchInputPopover').showPopover();
+    document.querySelector('#searchInputPopover .searchQuery').focus();
+  })
+</script>
+
+
+
+<main>
+
+
+
+<link rel="stylesheet" href="/scss/capabilities.47c8706bd7e90133e0a9341ee137c36b14843f0a2fdaf7a24da49e16caeb479c.css" integrity="sha256-R8hwa9fpATPgqTQe4TfDaxSEPwov2veiTaSeFsrrR5w=">
+<h4><a href="/capabilities">Capabilities</a>: fast feedback</h4>
+<h1>
+    Pervasive security
+    <a class="core" href='/research/'>core</a>
+</h1>
+
+<section class="hasSidebar">
+    <article>
+        <p>Security is everyone&rsquo;s responsibility. The
+<a href="/research/2016/2016-state-of-devops-report.pdf" target="_blank" >2016 State of DevOps Report</a>
+(PDF) research shows that high-performing teams spend 50 percent less time
+remediating security issues than low-performing teams. By better integrating
+information security (InfoSec) objectives into daily work, teams can achieve
+higher levels of software delivery performance and build more secure systems.
+This idea is also known as <em>shifting left</em>, because concerns, including security
+concerns, are addressed earlier in the software development lifecycle (that is,
+left in a left-to-right schedule diagram).</p>
+<p>In software development, there are at least these four activities: design,
+develop, test, and release. In a traditional software development cycle, testing
+(including security testing), happens after development is complete. This
+typically means that a team discovers significant problems, including
+architectural flaws, that are expensive to fix.</p>
+<p>After defects are discovered, developers must then find the contributing factors
+and how to fix them. In complex production systems, it&rsquo;s not usually a single
+cause; instead, it&rsquo;s often a series of factors that interact to cause a defect.
+Defects involving security, performance, and availability are expensive and
+time-consuming to remedy; they often require architectural changes. The time
+required to find the defect, develop a solution, and fully test the fix are
+unpredictable. This can further push out delivery dates.</p>
+<p>Continuous delivery borrows from lean thinking the concept of building quality
+into the product throughout the process. As W. Edwards Deming says in his
+<a href="https://deming.org/explore/fourteen-points?apartner=aarp" target="_blank" >Fourteen Points for the Transformation of Management</a>,
+&ldquo;Cease dependence on inspection to achieve quality. Eliminate the need for
+inspection on a mass basis by building quality into the product in the first
+place.&rdquo; In this model, rather than taking a purely phased approach, developers
+work with security and testing experts to design and deliver
+<a href="/capabilities/working-in-small-batches" >work in small batches</a>
+throughout the product lifecycle.</p>
+<p>Research from
+<a href="/research/2016/2016-state-of-devops-report.pdf" target="_blank" >DORA</a>
+(PDF) shows that teams can achieve better outcomes by making security a part of
+everyone&rsquo;s daily work instead of testing for security concerns at the end of the
+process. This means integrating security testing and controls into the daily
+work of development, QA, and operations. Ideally, much of this work can be
+automated and put into your deployment pipeline. By automating these activities,
+you can generate evidence on demand to demonstrate that your controls are
+operating effectively; this information is useful to auditors, assessors, and
+anyone else working in the value stream.</p>
+<h2 id="how-to-implement-improved-security-quality">How to implement improved security quality</h2>
+<p>Shifting the security review process &ldquo;left&rdquo; or earlier in the software
+development lifecycle requires several changes from traditional information
+security methods, but is not a significant deviation from traditional software
+development methods on closer inspection.</p>
+<h3 id="get-infosec-involved-in-software-design">Get InfoSec involved in software design</h3>
+<p>The InfoSec team should get involved in the design phase for all projects. When
+a project design begins, a security review can be added as a gating factor for
+releasing the design to the development stage. This review process might
+represent a fundamental change in the development process. This change might
+require developer training. It might also require you to increase the staff of
+the InfoSec team, and provide organizational support for the change. While
+including InfoSec might represent a change in your organization, including new
+stakeholders in design is not a new concept and should be embraced when
+considering the benefits.</p>
+<h3 id="develop-security-approved-tools">Develop security-approved tools</h3>
+<p>Providing developers with preapproved libraries and tools that include input
+from the InfoSec team can help standardize developer code. Using standard code
+makes it easier for the InfoSec team to review the code. Standard code allows
+automated testing to check that developer are using preapproved libraries. This
+can also help scale the input and influence from InfoSec, because that team is
+typically understaffed compared to developers and testers.</p>
+<h3 id="develop-automated-testing">Develop automated testing</h3>
+<p>Building security tests into the
+<a href="/capabilities/test-automation" >automated testing</a>
+process means that code can be
+<a href="/capabilities/continuous-integration" >continuously tested</a>
+at scale without requiring a manual review. Automated testing can identify
+common security vulnerabilities, and it can be applied uniformly as a part of a
+continuous integration pipeline or build process. Automated testing does require
+you to design and develop automated security tests, both initially and as an
+on-going effort as new security tests are identified. This is another
+opportunity to scale the input from the InfoSec team.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<p>Some common pitfalls that prevent teams from shifting security left include the
+following:</p>
+<ul>
+<li><strong>Failing to collaborate with the InfoSec team</strong>. The biggest mistake
+is when teams fail to collaborate with their InfoSec teams. InfoSec is a
+vitally important function in an era where threats are ubiquitous and ongoing.</li>
+<li><strong>Understaffing InfoSec teams</strong>. InfoSec teams are often poorly staffed.
+James Wickett, Senior Security Engineer at Verica,
+<a href="https://blog.xebialabs.com/2017/04/20/10-tips-integrating-security-devops/" target="_blank" >cites</a>
+a ratio of 1 InfoSec person per 10 infrastructure people per 100 developers
+in large companies.</li>
+<li><strong>Engaging too late with the InfoSec team</strong>. In many cases, the InfoSec
+gets involved only at the end of the software delivery lifecycle, when it
+is usually painful and expensive to make changes that are necessary to
+improve security.</li>
+<li><strong>Being unfamiliar with common security risks</strong>. Many developers are
+unaware of common security risks such as the
+<a href="https://owasp.org/www-project-top-ten/" target="_blank" >OWASP Top 10</a>
+and how to prevent them.</li>
+</ul>
+<h2 id="ways-to-improve-security-quality">Ways to improve security quality</h2>
+<p>You can improve software delivery performance and security quality by doing the
+following:</p>
+<ul>
+<li><strong>Conduct security reviews</strong>. Conduct a security review for all major
+features while ensuring that the security review process doesn&rsquo;t slow down
+development.</li>
+<li><strong>Build preapproved code</strong>.  Have the InfoSec team build preapproved,
+easy-to-consume libraries, packages, toolchains, and processes for
+developers and IT operations to use in their work.</li>
+<li><strong>Integrate security review into every phase</strong>. Integrate InfoSec into
+the daily work of the entire software delivery lifecycle. This includes
+having the InfoSec team provide input during the design of the application,
+attending software demos, and providing feedback during demos.</li>
+<li><strong>Test for security</strong>. Test security requirements as a part of the
+automated testing process including areas where preapproved code should be used.</li>
+<li><strong>Invite InfoSec to demos</strong>. If you include the InfoSec team in your
+application demos, they can spot security-related weaknesses early, which
+gives the team ample time to fix.</li>
+</ul>
+<h2 id="ways-to-measure-security-quality">Ways to measure security quality</h2>
+<p>Based on the stated ways to improve outlined above, you can measure security in
+the following ways.</p>
+<table>
+  <colgroup>
+    <col width="30%">
+    <col width="35%">
+    <col width="35%">
+  </colgroup>
+<thead>
+<tr>
+<th><strong>Factor to test</strong></th>
+<th><strong>What to measure</strong></th>
+<th><strong>Goal</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whether features undergo a security review</td>
+<td>The percentage of features that undergo security review early in the design
+process.</td>
+<td>This percentage should go up over time.</td>
+</tr>
+<tr>
+<td>Whether security review slows down the development cycle</td>
+<td>How much time the review add to the development process.</td>
+<td>The time that security reviews take should go down until it reaches an
+agreed-to minimum.</td>
+</tr>
+<tr>
+<td>How well security is integrated into the delivery lifecycle</td>
+<td>The degree of InfoSec involvement in each step of the software delivery
+lifecycle. For example, you can measure the number of security reviews
+captured at each of the stages of the software development lifecycle
+(design, develop, test, and release).</td>
+<td>This value should go up until it reaches a value that suggests that InfoSec
+is fully integrated into the lifecycle.</td>
+</tr>
+<tr>
+<td>Whether automated testing covers security requirements</td>
+<td>The involvement of the InfoSec team in writing automated tests. As InfoSec
+gains greater input into the testing process, the number or percentage of
+security requirements that are included in the automated testing
+process.</td>
+<td>This percentage should go up over time.</td>
+</tr>
+<tr>
+<td>The use of preapproved libraries, packages, toolchains, and processes</td>
+<td>Initially, whether InfoSec is engaged in tools development. As work
+progresses, the number of InfoSec-approved libraries, packages, and
+toolchains that are available, or the number of these resources that are
+used by the development and operations teams.</td>
+<td>Engagement should increase over time until the organization agrees that
+InfoSec oversight of tools is at the correct level. Similarly, the
+percentage or number of preapproved tools in use should increase until the
+team uses all the tools that InfoSec has created or approved. </td>
+</tr>
+</tbody>
+</table>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<ul>
+<li>For links to other articles and resources, see the
+<a href="https://cloud.google.com/devops" target="_blank" >Google Cloud DevOps page</a>.</li>
+<li>See the
+<a href="https://owasp.org/www-project-top-ten/" target="_blank" >OWASP Top 10</a>
+for a list of the 10 most critical web application security risks.</li>
+<li>Read the
+<a href="https://landing.google.com/sre/books/" target="_blank" >Site Reliability Engineering (SRE) book</a>.</li>
+<li>Explore our DevOps
+<a href="/" >research program</a>.</li>
+<li>Take the
+<a href="/quickcheck/" >DORA quick check</a>
+to understand where you stand in comparison with the rest of the industry.</li>
+</ul>
+
+    </article>
+    <sidebar>
+        <section>
+            <h4>Capabilities</h4>
+            <h5>Climate for Learning</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/code-maintainability/">Code maintainability</a></li>
+                
+                    <li><a href="/capabilities/documentation-quality/">Documentation quality</a></li>
+                
+                    <li><a href="/capabilities/teams-empowered-to-choose-tools/">Empowering teams to choose tools</a></li>
+                
+                    <li><a href="/capabilities/generative-organizational-culture/">Generative organizational culture</a></li>
+                
+                    <li><a href="/capabilities/job-satisfaction/">Job satisfaction</a></li>
+                
+                    <li><a href="/capabilities/learning-culture/">Learning culture</a></li>
+                
+                    <li><a href="/capabilities/team-experimentation/">Team experimentation</a></li>
+                
+                    <li><a href="/capabilities/transformational-leadership/">Transformational leadership</a></li>
+                
+                    <li><a href="/capabilities/well-being/">Well-being</a></li>
+                
+            </ul>
+            <h5>Fast Flow</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-delivery/">Continuous delivery</a></li>
+                
+                    <li><a href="/capabilities/database-change-management/">Database change management</a></li>
+                
+                    <li><a href="/capabilities/deployment-automation/">Deployment automation</a></li>
+                
+                    <li><a href="/capabilities/flexible-infrastructure/">Flexible infrastructure</a></li>
+                
+                    <li><a href="/capabilities/loosely-coupled-teams/">Loosely coupled teams</a></li>
+                
+                    <li><a href="/capabilities/streamlining-change-approval/">Streamlining change approval</a></li>
+                
+                    <li><a href="/capabilities/trunk-based-development/">Trunk-based development</a></li>
+                
+                    <li><a href="/capabilities/version-control/">Version control</a></li>
+                
+                    <li><a href="/capabilities/visual-management/">Visual management</a></li>
+                
+                    <li><a href="/capabilities/wip-limits/">Work in process limits</a></li>
+                
+                    <li><a href="/capabilities/working-in-small-batches/">Working in small batches</a></li>
+                
+            </ul>
+            <h5>Fast Feedback</h5>
+            <ul>
+                
+                    <li><a href="/capabilities/continuous-integration/">Continuous integration</a></li>
+                
+                    <li><a href="/capabilities/customer-feedback/">Customer feedback</a></li>
+                
+                    <li><a href="/capabilities/monitoring-and-observability/">Monitoring and observability</a></li>
+                
+                    <li><a href="/capabilities/monitoring-systems/">Monitoring systems to inform business decisions</a></li>
+                
+                    <li><a href="/capabilities/pervasive-security/">Pervasive security</a></li>
+                
+                    <li><a href="/capabilities/proactive-failure-notification/">Proactive failure notification</a></li>
+                
+                    <li><a href="/capabilities/test-automation/">Test automation</a></li>
+                
+                    <li><a href="/capabilities/test-data-management/">Test data management</a></li>
+                
+                    <li><a href="/capabilities/work-visibility-in-value-stream/">Visibility of work in the value stream</a></li>
+                
+            </ul>
+        </section>
+    </sidebar>
+</section>
+
+
+
+
+        </main><footer>
+  <div class="container">
+    <div class="logo">
+      <a href="https://cloud.google.com/" target="_blank"><img src="/img/cloud-logo-dark.svg"></a>
+    </div>
+    <div class="links">
+      <a href="/resources/">Resources</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="search">
+      <form action="/search/" method="get">
+        <input type="text" name="q" placeholder="Search this site">
+      </form>
+    </div>
+    <div class="license">
+      DORA is a program run by Google Cloud. All content on this site is licensed by Google LLC under <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, unless otherwise specified.
+    </div>
+    <div class="socials">
+      <a class="google-material-icons" href="https://www.linkedin.com/company/doradotdev/" target="_blank"
+        aria-label="Follow us on LinkedIn">post_linkedin</a>
+      <a class="google-material-icons" href="https://www.youtube.com/@dora-dev" target="_blank"
+        aria-label="Watch DORA videos on YouTube">post_youtube</a>
+      <a class="google-material-icons" href="https://github.com/dora-team/dora.dev" target="_blank"
+        aria-label="This site's source code">github</a>
+    </div>
+  </div>
+</footer></body>
+</html>
